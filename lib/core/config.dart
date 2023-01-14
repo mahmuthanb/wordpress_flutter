@@ -16,6 +16,7 @@ class ProdAppConfigImpl extends AppConfig {
 }
 
 @Environment(Environment.test)
+@Environment(Environment.dev)
 @LazySingleton(as: AppConfig)
 class TestAppConfigImpl extends AppConfig {
   @override

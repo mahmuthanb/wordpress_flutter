@@ -13,6 +13,7 @@ import 'package:wordpress_flutter/core/di/app_module.dart' as _i5;
 
 const String _prod = 'prod';
 const String _test = 'test';
+const String _dev = 'dev';
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -34,7 +35,10 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.lazySingleton<_i3.AppConfig>(
       () => _i3.TestAppConfigImpl(),
-      registerFor: {_test},
+      registerFor: {
+        _test,
+        _dev,
+      },
     );
     gh.singleton<_i4.Dio>(appModule.injectRetrofitAPI);
     return this;
