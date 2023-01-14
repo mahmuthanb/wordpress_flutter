@@ -3,11 +3,11 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:wordpress_flutter/const/colors.dart';
-import 'package:wordpress_flutter/const/connections.dart';
-import 'package:wordpress_flutter/controller/post_controller.dart';
-import 'package:wordpress_flutter/model/post_model.dart';
-import 'package:wordpress_flutter/view/post_detail.dart';
+import 'package:wordpress_flutter/app/data/model/post_model.dart';
+import 'package:wordpress_flutter/app/presentation/post_detail.dart';
+import 'package:wordpress_flutter/core/res/colors.dart';
+import 'package:wordpress_flutter/app/data/repository/connections.dart';
+import 'package:wordpress_flutter/app/data/service/post_controller.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -74,9 +74,11 @@ class HomePage extends StatelessWidget {
                       return Card(
                           elevation: 1,
                           child: GestureDetector(
-                            onTap: () => Get.to(() => PostDetailPage(postData: postController.postList[index])),
+                            onTap: () => Get.to(() => PostDetailPage(
+                                postData: postController.postList[index])),
                             child: Container(
-                              margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 10),
                               width: size.width,
                               height: realHeight * .15,
                               child: Column(
@@ -88,7 +90,8 @@ class HomePage extends StatelessWidget {
                                         width: size.width * .97 - 20,
                                         height: realHeight * .025,
                                         child: Text(
-                                          HtmlUnescape().convert(data.title!.rendered.toString()),
+                                          HtmlUnescape().convert(
+                                              data.title!.rendered.toString()),
                                           overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -100,7 +103,8 @@ class HomePage extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      (data.excerpt != null && data.excerpt!.rendered != null)
+                                      (data.excerpt != null &&
+                                              data.excerpt!.rendered != null)
                                           ? SizedBox(
                                               width: size.width * .9,
                                               height: realHeight * .125,

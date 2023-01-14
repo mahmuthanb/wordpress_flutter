@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
-import 'package:wordpress_flutter/const/connections.dart';
-import 'package:wordpress_flutter/model/post_model.dart';
+import 'package:wordpress_flutter/app/data/model/post_model.dart';
+import 'package:wordpress_flutter/app/data/repository/connections.dart';
 
 class PostProvider {
   static var client = http.Client();

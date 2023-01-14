@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:wordpress_flutter/model/post_model.dart';
-import 'package:wordpress_flutter/service_provider/post_provider.dart';
+import 'package:wordpress_flutter/app/data/model/post_model.dart';
+import 'package:wordpress_flutter/app/data/repository/post_provider.dart';
 
 class PostController extends GetxController {
   var isLoading = true.obs;

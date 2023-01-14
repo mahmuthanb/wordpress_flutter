@@ -1,16 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-// import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:marquee/marquee.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:wordpress_flutter/model/post_model.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:get/get.dart';
-import 'package:wordpress_flutter/shared/image_view.dart';
+import 'package:wordpress_flutter/app/data/model/post_model.dart';
+import 'package:wordpress_flutter/core/widget/image_view.dart';
 
 class PostDetailPage extends StatefulWidget {
   const PostDetailPage({
@@ -27,7 +25,8 @@ class _PostDetailPageState extends State<PostDetailPage> {
   late WebViewController controller;
   @override
   Widget build(BuildContext context) {
-    String title = HtmlUnescape().convert(widget.postData.title!.rendered.toString());
+    String title =
+        HtmlUnescape().convert(widget.postData.title!.rendered.toString());
     final AppBar appBar = AppBar();
     final Size size = MediaQuery.of(context).size;
     final double realHeight = size.height -
@@ -76,7 +75,8 @@ class _PostDetailPageState extends State<PostDetailPage> {
             height: realHeight,
             child: SingleChildScrollView(
               child: Html(
-                onLinkTap: (String? url, RenderContext ctx, Map<String, String> attributes, dom.Element? element) {
+                onLinkTap: (String? url, RenderContext ctx,
+                    Map<String, String> attributes, dom.Element? element) {
                   var pageLoading = true.obs;
                   final urlWithoutWWW = url!.replaceAll(RegExp('www.'), '');
                   showMaterialModalBottomSheet(
