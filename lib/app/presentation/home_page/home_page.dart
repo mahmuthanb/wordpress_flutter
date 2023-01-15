@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:get/get.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wordpress_flutter/app/data/model/post_model.dart';
-import 'package:wordpress_flutter/app/presentation/post_detail.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/app/data/repository/connections.dart';
-import 'package:wordpress_flutter/app/data/service/post_controller.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
