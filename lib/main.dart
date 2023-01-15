@@ -34,10 +34,13 @@ class WordPressFlutter extends StatelessWidget {
         child: Scaffold(
           body: BlocListener<InternetCubit, InternetState>(
             listener: (context, state) {
-              InfoMessage(
-                      message: "Internet connected",
-                      status: MessageStatus.success)
-                  .snack(context);
+              if (state is InternetConnected) {
+                InfoMessage(
+                        message:
+                            'Internet connected via ${state.connectivityResult.name}',
+                        status: MessageStatus.success)
+                    .snack(context);
+              }
             },
             child: BlocBuilder<InternetCubit, InternetState>(
               builder: (context, state) {
