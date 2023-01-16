@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wordpress_flutter/app/data/model/post_model.dart';
+import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/view/home_page_view.dart';
 import 'package:wordpress_flutter/app/data/repository/connections.dart';

@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:wordpress_flutter/app/data/model/post_model.dart';
+import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/data/service/api_service.dart';
 
 abstract class PostsRepository {

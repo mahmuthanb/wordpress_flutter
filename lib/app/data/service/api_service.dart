@@ -1,6 +1,6 @@
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
-import 'package:wordpress_flutter/app/data/model/post_model.dart';
+import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 
 part 'api_service.g.dart';
 
