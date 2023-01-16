@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:wordpress_flutter/app/data/service/api_service.dart';
 import 'package:wordpress_flutter/core/config.dart';
 import 'package:wordpress_flutter/core/di/locator.dart';
 import 'package:wordpress_flutter/core/interceptor/error_interceptor.dart';
@@ -29,4 +30,7 @@ abstract class AppModule {
     dio.interceptors.add(ErrorInterceptor());
     return dio;
   }
+
+  @lazySingleton
+  ApiService get injectApiService => ApiService(injectRetrofitAPI);
 }
