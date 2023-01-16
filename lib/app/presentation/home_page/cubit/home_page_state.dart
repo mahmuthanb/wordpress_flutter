@@ -5,6 +5,12 @@ abstract class HomePageState {}
 
 class HomePageInitial extends HomePageState {}
 
-class HomePageLoaded extends HomePageState {}
+class HomePageLoaded extends HomePageState {
+  final List<PostModel> postList;
+  HomePageLoaded({required this.postList});
+}
 
-class HomePageFail extends HomePageState {}
+class HomePageFail extends HomePageState {
+  final String? message;
+  HomePageFail({this.message});
+}
