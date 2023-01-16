@@ -30,8 +30,8 @@ class HomePageView extends StatelessWidget {
               ),
             ),
           ),
-          baseColor: shimmerBase,
-          highlightColor: shimmerHighlighted);
+          baseColor: AppColors.shimmerBase,
+          highlightColor: AppColors.shimmerHighlighted);
     } else {
       return ListView.builder(
         itemCount: postList.length,
