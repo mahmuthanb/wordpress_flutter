@@ -7,6 +7,7 @@ import 'package:wordpress_flutter/app/presentation/connectivity/cubit/internet_c
 import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
 import 'package:wordpress_flutter/core/di/locator.dart';
+import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/widget/info_message.dart';
 import 'package:wordpress_flutter/core/widget/loading_view.dart';
 
@@ -17,12 +18,9 @@ class App extends StatelessWidget {
     final Connectivity connectivity = Connectivity();
     final PostsRepositoryImpl postsRepository =
         PostsRepositoryImpl(getIt<ApiService>());
-    print("object");
     return MaterialApp(
       title: 'WordPress in Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
+      theme: ThemeData(primarySwatch: AppColors.primarySwatch),
       debugShowCheckedModeBanner: false,
       home: MultiBlocProvider(
         providers: [
