@@ -125,3 +125,4 @@ app.*.symbols
 # Build Runner 
 *.g.dart 
 *.config.dart
+*.freezed.dart
