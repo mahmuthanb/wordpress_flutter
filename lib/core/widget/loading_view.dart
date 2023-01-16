@@ -17,7 +17,7 @@ class LoadingScreen extends StatelessWidget {
     return Container(
       width: size.width,
       height: size.height,
-      color: Colors.green.shade300,
+      color: Colors.grey.shade300,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +39,8 @@ class LoadingScreen extends StatelessWidget {
             child: AnimatedTextKit(
               repeatForever: true,
               animatedTexts: [
-                TypewriterAnimatedText(_title ?? 'connection waiting'),
+                TypewriterAnimatedText(
+                    _title ?? 'loading'), //'connection waiting'
               ],
             ),
           ),
