@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
@@ -33,4 +34,7 @@ abstract class AppModule {
 
   @lazySingleton
   ApiService get injectApiService => ApiService(injectRetrofitAPI);
+
+  @lazySingleton
+  Connectivity get connectivity => Connectivity();
 }

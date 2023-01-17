@@ -1,7 +1,7 @@
 part of 'internet_cubit.dart';
 
 @immutable
-abstract class InternetState {}
+abstract class InternetState extends BaseCubitState {}
 
 class InternetLoading extends InternetState {}
 

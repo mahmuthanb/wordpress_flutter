@@ -5,14 +5,19 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:dio/dio.dart' as _i5;
+import 'package:connectivity_plus/connectivity_plus.dart' as _i5;
+import 'package:dio/dio.dart' as _i6;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:wordpress_flutter/app/data/repository/posts_repository.dart'
-    as _i6;
+    as _i8;
 import 'package:wordpress_flutter/app/data/service/api_service.dart' as _i3;
+import 'package:wordpress_flutter/app/presentation/app/cubit/test_cubit.dart'
+    as _i9;
+import 'package:wordpress_flutter/app/presentation/connectivity/cubit/internet_cubit.dart'
+    as _i7;
 import 'package:wordpress_flutter/core/config.dart' as _i4;
-import 'package:wordpress_flutter/core/di/app_module.dart' as _i7;
+import 'package:wordpress_flutter/core/di/app_module.dart' as _i10;
 
 const String _prod = 'prod';
 const String _test = 'test';
@@ -44,11 +49,15 @@ extension GetItInjectableX on _i1.GetIt {
         _dev,
       },
     );
-    gh.singleton<_i5.Dio>(appModule.injectRetrofitAPI);
-    gh.lazySingleton<_i6.PostsRepository>(
-        () => _i6.PostsRepositoryImpl(gh<_i3.ApiService>()));
+    gh.lazySingleton<_i5.Connectivity>(() => appModule.connectivity);
+    gh.singleton<_i6.Dio>(appModule.injectRetrofitAPI);
+    gh.factory<_i7.InternetCubit>(
+        () => _i7.InternetCubit(connectivity: gh<_i5.Connectivity>()));
+    gh.lazySingleton<_i8.PostsRepository>(
+        () => _i8.PostsRepositoryImpl(gh<_i3.ApiService>()));
+    gh.factory<_i9.TestCubit>(() => _i9.TestCubit());
     return this;
   }
 }
 
-class _$AppModule extends _i7.AppModule {}
+class _$AppModule extends _i10.AppModule {}

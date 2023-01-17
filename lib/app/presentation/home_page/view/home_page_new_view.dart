@@ -51,8 +51,7 @@ class HomePageNewView extends StatelessWidget {
             } else {
               return Column(
                 children: [
-                  SizedBox(
-                    height: size.height * .05,
+                  Expanded(
                     child: Container(
                       decoration: const BoxDecoration(
                         border: Border.symmetric(
@@ -65,7 +64,13 @@ class HomePageNewView extends StatelessWidget {
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return Text('CATEGORY $index');
+                            return Container(
+                              margin: const EdgeInsets.symmetric(
+                                vertical: AppDimens.xs,
+                                horizontal: AppDimens.s,
+                              ),
+                              child: Text('CATEGORY $index'),
+                            );
                           },
                           separatorBuilder: (context, index) =>
                               const SizedBox(width: AppDimens.xxs),
@@ -73,6 +78,7 @@ class HomePageNewView extends StatelessWidget {
                     ),
                   ),
                   Expanded(
+                    flex: 20,
                     child: ListView.builder(
                       itemCount: postList.length,
                       itemBuilder: (context, index) {
