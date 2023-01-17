@@ -11,6 +11,8 @@ abstract class ApiService {
 
   @GET("/posts")
   Future<List<PostModel>> fetchPosts();
+  @GET("/posts")
+  Future<List<PostModel>> fetchPostsByCategory(@Body() List<String> categories);
   @GET("/categories")
   Future<List<CategoryModel>> fetchCategories();
 }
