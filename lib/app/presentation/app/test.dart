@@ -6,14 +6,14 @@ class TestCounter extends BaseWidget<TestCubit, TestState> {
   const TestCounter({super.key});
 
   @override
-  Widget build(BuildContext context, TestCubit cubit, TestState state) {
+  Widget build(BuildContext context, TestCubit viewModel, TestState state) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("deneme"),
+        title: const Text("deneme"),
       ),
       body: Container(
         child: (state is TestInitial)
-            ? Center(child: Text(cubit.count.toString() + "asdada"))
+            ? Center(child: Text(viewModel.count.toString()))
             : Container(
                 width: 1000,
                 height: 1000,
@@ -21,9 +21,10 @@ class TestCounter extends BaseWidget<TestCubit, TestState> {
               ),
       ),
       floatingActionButton: IconButton(
-        icon: const Icon(Icons.abc),
-        onPressed: () => cubit.incCount(),
-      ),
+          icon: const Icon(Icons.add),
+          onPressed: () {
+            viewModel.incCount();
+          }),
     );
   }
 }

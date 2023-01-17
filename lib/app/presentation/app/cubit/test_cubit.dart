@@ -13,6 +13,5 @@ class TestCubit extends Cubit<TestState> {
 
   void incCount() {
     count++;
-    print(count);
   }
 }

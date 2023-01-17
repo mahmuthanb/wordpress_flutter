@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:wordpress_flutter/core/base/base_view_model.dart';
 import 'package:wordpress_flutter/core/di/locator.dart';
 
