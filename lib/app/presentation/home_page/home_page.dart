@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           if (state is HomePageInitial) {
             return const LoadingScreen();
           } else if (state is HomePageLoaded) {
-            return HomePageNewView(state.postList);
+            return HomePageNewView(state.postList, state.categoriesList);
           } else {
             return const LoadingScreen(title: "Error");
           }

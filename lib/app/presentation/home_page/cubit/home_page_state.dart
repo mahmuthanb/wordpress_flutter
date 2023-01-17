@@ -7,7 +7,11 @@ class HomePageInitial extends HomePageState {}
 
 class HomePageLoaded extends HomePageState {
   final List<PostModel> postList;
-  HomePageLoaded({required this.postList});
+  final List<CategoryModel> categoriesList;
+  HomePageLoaded(
+    this.postList,
+    this.categoriesList,
+  );
 }
 
 class HomePageFail extends HomePageState {

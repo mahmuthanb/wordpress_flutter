@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:wordpress_flutter/app/data/model/category/category_model.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/res/text_style.dart';
 
 class HomePageNewView extends StatelessWidget {
-  const HomePageNewView(this.postList, {super.key});
+  const HomePageNewView(
+    this.postList,
+    this.categoriesList, {
+    super.key,
+  });
 
   final List<PostModel> postList;
+  final List<CategoryModel> categoriesList;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -69,12 +75,12 @@ class HomePageNewView extends StatelessWidget {
                                 vertical: AppDimens.xs,
                                 horizontal: AppDimens.s,
                               ),
-                              child: Text('CATEGORY $index'),
+                              child: Text(categoriesList[index].name!),
                             );
                           },
                           separatorBuilder: (context, index) =>
                               const SizedBox(width: AppDimens.xxs),
-                          itemCount: 6),
+                          itemCount: categoriesList.length),
                     ),
                   ),
                   Expanded(

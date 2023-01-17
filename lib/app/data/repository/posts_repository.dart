@@ -13,7 +13,6 @@ class PostsRepositoryImpl implements PostsRepository {
 
   @override
   Future<List<PostModel>> fetchPosts() {
-    // return _apiService.fetchPosts();
     return _apiService.fetchPosts();
   }
 }

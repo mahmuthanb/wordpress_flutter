@@ -1,5 +1,6 @@
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
+import 'package:wordpress_flutter/app/data/model/category/category_model.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 
 part 'api_service.g.dart';
@@ -10,4 +11,6 @@ abstract class ApiService {
 
   @GET("/posts")
   Future<List<PostModel>> fetchPosts();
+  @GET("/categories")
+  Future<List<CategoryModel>> fetchCategories();
 }

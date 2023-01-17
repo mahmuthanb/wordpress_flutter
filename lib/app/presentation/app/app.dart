@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wordpress_flutter/app/data/repository/common_repository.dart';
 import 'package:wordpress_flutter/app/data/repository/posts_repository.dart';
 import 'package:wordpress_flutter/app/data/service/api_service.dart';
 import 'package:wordpress_flutter/app/presentation/connectivity/cubit/internet_cubit.dart';
@@ -16,8 +17,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Connectivity connectivity = Connectivity();
-    final PostsRepositoryImpl postsRepository =
-        PostsRepositoryImpl(getIt<ApiService>());
+    final CommonRepositoryImpl commonRepository =
+        CommonRepositoryImpl(getIt<ApiService>());
     return MaterialApp(
       title: 'WordPress in Flutter',
       theme: ThemeData(primarySwatch: AppColors.primarySwatch),
@@ -29,8 +30,7 @@ class App extends StatelessWidget {
                 InternetCubit(connectivity: connectivity),
           ),
           BlocProvider<HomePageCubit>(
-            create: (context) =>
-                HomePageCubit(postsRepository: postsRepository),
+            create: (context) => HomePageCubit(commonRepository),
           )
         ],
         child: Scaffold(
