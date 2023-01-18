@@ -14,7 +14,9 @@ class ProdAppConfigImpl extends AppConfig {
   String get baseUrl => "$domain/wp-json/wp/v2";
 
   @override
-  String get domain => "https://www.mahmuthan.com";
+
+  // TODO Replace with your WordPress webpage url
+  String get domain => "https://www.yoursite.com";
 
   @override
   String get name => "WordPress App Prod";
@@ -28,7 +30,7 @@ class TestAppConfigImpl extends AppConfig {
   String get baseUrl => "$domain/wp-json/wp/v2";
 
   @override
-  String get domain => "https://www.mahmuthan.com";
+  String get domain => "https://www.yoursite.com";
 
   @override
   String get name => "WordPress App Dev";
