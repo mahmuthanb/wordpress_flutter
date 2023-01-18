@@ -5,7 +5,7 @@ import 'package:wordpress_flutter/app/data/repository/common_repository.dart';
 import 'package:wordpress_flutter/app/data/service/api_service.dart';
 import 'package:wordpress_flutter/app/presentation/connectivity/cubit/internet_cubit.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart';
-import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
+import 'package:wordpress_flutter/app/presentation/wellcome/wellcome.dart';
 import 'package:wordpress_flutter/core/di/locator.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/widget/info_message.dart';
@@ -47,7 +47,8 @@ class App extends StatelessWidget {
               builder: (context, state) {
                 if (state is InternetConnected &&
                     state.connectivityResult != ConnectivityResult.none) {
-                  return HomePage();
+                  // return HomePage();
+                  return const WellcomePage();
                 } else if (state is InternetDisconnected) {
                   return const LoadingScreen(title: "Disconnected");
                 } else {

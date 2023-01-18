@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wordpress_flutter/app/data/model/category/category_model.dart';
@@ -73,9 +74,16 @@ class HomePageNewView extends StatelessWidget {
                             return Container(
                               margin: const EdgeInsets.symmetric(
                                 vertical: AppDimens.xs,
-                                horizontal: AppDimens.s,
+                                horizontal: AppDimens.m,
                               ),
-                              child: Text(categoriesList[index].name!),
+                              child: Text(
+                                categoriesList[index].name!.toUpperCase(),
+                                style: GoogleFonts.openSans(
+                                  fontWeight: FontWeight.w800,
+                                  color: AppColors.darkerThenGrey,
+                                ),
+                                //style: AppTextStyle.headerTextStyle,
+                              ),
                             );
                           },
                           separatorBuilder: (context, index) =>
