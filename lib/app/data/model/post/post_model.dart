@@ -115,10 +115,10 @@ class Cury with _$Cury {
   factory Cury.fromJson(Map<String, dynamic> json) => _$CuryFromJson(json);
 }
 
-enum Href { https_api_w_org_del }
+enum Href { httpsApiWOrgDel }
 
 final hrefValues =
-    EnumValues({"https://api.w.org/{rel}": Href.https_api_w_org_del});
+    EnumValues({"https://api.w.org/{rel}": Href.httpsApiWOrgDel});
 
 enum Name { wp }
 
@@ -157,12 +157,12 @@ class WpTerm with _$WpTerm {
   factory WpTerm.fromJson(Map<String, dynamic> json) => _$WpTermFromJson(json);
 }
 
-enum Taxonomy { category, post_tag, yst_prominent_words }
+enum Taxonomy { category, postTag, ystProminentWords }
 
 final taxonomyValues = EnumValues({
   "category": Taxonomy.category,
-  "post_tag": Taxonomy.post_tag,
-  "yst_prominent_words": Taxonomy.yst_prominent_words
+  "post_tag": Taxonomy.postTag,
+  "yst_prominent_words": Taxonomy.ystProminentWords
 });
 
 enum StatusEnum { publish }
