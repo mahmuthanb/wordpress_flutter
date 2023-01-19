@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:wordpress_flutter/app/data/repository/common_repository.dart';
 import 'package:wordpress_flutter/app/data/service/api_service.dart';
 import 'package:wordpress_flutter/app/presentation/connectivity/cubit/internet_cubit.dart';
@@ -8,6 +9,7 @@ import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cub
 import 'package:wordpress_flutter/app/presentation/wellcome/wellcome.dart';
 import 'package:wordpress_flutter/core/di/locator.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
+import 'package:wordpress_flutter/core/source/local_data_source.dart';
 import 'package:wordpress_flutter/core/widget/info_message.dart';
 import 'package:wordpress_flutter/core/widget/loading_view.dart';
 
@@ -30,6 +32,9 @@ class App extends StatelessWidget {
           ),
           BlocProvider<HomePageCubit>(
             create: (context) => HomePageCubit(commonRepository),
+          ),
+          BlocProvider<WellcomeCubit>(
+            create: (context) => WellcomeCubit(),
           )
         ],
         child: Scaffold(
@@ -48,7 +53,7 @@ class App extends StatelessWidget {
                 if (state is InternetConnected &&
                     state.connectivityResult != ConnectivityResult.none) {
                   // return HomePage();
-                  return const WellcomePage();
+                  return WellcomePage();
                 } else if (state is InternetDisconnected) {
                   return const LoadingScreen(title: "Disconnected");
                 } else {
