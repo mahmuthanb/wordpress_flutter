@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -30,6 +31,15 @@ abstract class AppModule {
     }
     dio.interceptors.add(ErrorInterceptor());
     return dio;
+  }
+
+  @Environment(Environment.dev)
+  @Environment(Environment.prod)
+  @preResolve
+  Future<GetStorage> get initializeStorage async {
+    var storageName = "wordpressFlutter";
+    await GetStorage.init(storageName);
+    return GetStorage(storageName);
   }
 
   @lazySingleton

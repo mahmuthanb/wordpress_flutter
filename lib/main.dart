@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:wordpress_flutter/app/presentation/app/app.dart';
 import 'package:wordpress_flutter/core/di/locator.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupDI(Environment.dev);
+  await setupDI(Environment.dev);
   runApp(const App());
 }
