@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:wordpress_flutter/app/data/model/category/category_model.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/data/repository/common_repository.dart';
+import 'package:wordpress_flutter/core/base/base_view_model.dart';
 
 part 'home_page_state.dart';
 
+@injectable
 class HomePageCubit extends Cubit<HomePageState> {
   final CommonRepository commonRepository;
   HomePageCubit(this.commonRepository) : super(HomePageInitial()) {

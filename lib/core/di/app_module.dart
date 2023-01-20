@@ -11,7 +11,7 @@ import 'package:wordpress_flutter/core/interceptor/error_interceptor.dart';
 
 @module
 abstract class AppModule {
-  @singleton
+  @lazySingleton
   Dio get injectRetrofitAPI {
     Dio dio = Dio(
       BaseOptions(

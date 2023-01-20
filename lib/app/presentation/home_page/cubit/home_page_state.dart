@@ -1,7 +1,7 @@
 part of 'home_page_cubit.dart';
 
 @immutable
-abstract class HomePageState {}
+abstract class HomePageState extends BaseCubitState {}
 
 class HomePageInitial extends HomePageState {}
 
