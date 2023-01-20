@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:route_map/route_map.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/cubit/wellcome_cubit.dart';
+import 'package:wordpress_flutter/app/router.routes.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
+import 'package:wordpress_flutter/core/di/locator.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
+import 'package:wordpress_flutter/core/source/local_data_source.dart';
 import 'package:wordpress_flutter/core/util/validator.dart';
 
+@RouteMap(name: "/")
 class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
-  WellcomePage({super.key});
+  const WellcomePage({super.key});
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  final TextEditingController _domainController = TextEditingController();
   @override
   Widget build(
       BuildContext context, WellcomeCubit viewModel, WellcomeState state) {
-    bool? isValid = context.read<WellcomeCubit>().isValid;
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final TextEditingController _domainController = TextEditingController();
+    final String? domain = getIt<LocalDataSource>().domain;
+    _domainController.text = domain ?? "Enter your domain";
+    bool? isValid = viewModel.isValid;
     return Scaffold(
         backgroundColor: Colors.lightGreen.shade200,
         body: SafeArea(
@@ -110,14 +116,7 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                         context
                             .read<WellcomeCubit>()
                             .onSave(_domainController.text)
-                            .then(
-                              (value) => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => HomePage(),
-                                ),
-                              ),
-                            );
+                            .then((value) => const HomePage().push(context));
                       }
                     },
                     child: Row(
