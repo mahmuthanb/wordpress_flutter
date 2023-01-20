@@ -13,9 +13,6 @@ class App extends BaseWidget<InternetCubit, InternetState> {
   @override
   Widget build(
       BuildContext context, InternetCubit viewModel, InternetState state) {
-    // final Connectivity connectivity = Connectivity();
-    // final CommonRepositoryImpl commonRepository =
-    //     CommonRepositoryImpl(getIt<ApiService>());
     return MaterialApp(
       title: 'WordPress in Flutter',
       theme: ThemeData(primarySwatch: AppColors.primarySwatch),
@@ -28,7 +25,7 @@ class App extends BaseWidget<InternetCubit, InternetState> {
             if (state is InternetConnected &&
                 state.connectivityResult != ConnectivityResult.none) {
               // return HomePage();
-              return WellcomePage();
+              return const WellcomePage();
             } else if (state is InternetDisconnected) {
               return const LoadingScreen(title: "Disconnected");
             } else {

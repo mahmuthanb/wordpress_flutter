@@ -116,7 +116,8 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                         context
                             .read<WellcomeCubit>()
                             .onSave(_domainController.text)
-                            .then((value) => const HomePage().push(context));
+                            .then((value) => const HomePage()
+                                .pushAndRemoveUntil(context, (p0) => false));
                       }
                     },
                     child: Row(

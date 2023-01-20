@@ -9,7 +9,7 @@ import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/view/wellcome_page.dart';
 
 class RouteMaps {
-  static String home = "/home";
+  static String home = "home";
   static String root = "/";
 }
 
