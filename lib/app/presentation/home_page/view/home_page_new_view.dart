@@ -5,6 +5,7 @@ import 'package:html_unescape/html_unescape.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wordpress_flutter/app/data/model/category/category_model.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
+import 'package:wordpress_flutter/app/presentation/category/category.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/res/text_style.dart';
@@ -101,8 +102,7 @@ class HomePageNewView extends StatelessWidget {
                             elevation: 0,
                             color: Colors.transparent,
                             child: GestureDetector(
-                              onTap: () => Navigator.of(context)
-                                  .pushNamed('post-detail', arguments: data),
+                              onTap: () => CategoryPage,
                               child: Container(
                                 margin: const EdgeInsets.symmetric(
                                   vertical: AppDimens.s,
