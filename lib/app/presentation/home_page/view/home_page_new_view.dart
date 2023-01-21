@@ -9,7 +9,7 @@ import 'package:wordpress_flutter/app/presentation/category/view/category_page.d
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/app/router.routes.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
-import 'package:wordpress_flutter/core/res/text_style.dart';
+import 'package:wordpress_flutter/core/res/styles.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:wordpress_flutter/core/widget/post_card.dart';
 
