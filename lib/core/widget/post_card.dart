@@ -8,6 +8,7 @@ import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/app/router.routes.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:wordpress_flutter/core/widget/shimmer.dart';
 
 class PostCard extends StatelessWidget {
   const PostCard(this.data, {super.key});
@@ -83,11 +84,31 @@ class PostCardShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Shimmer.fromColors(
       child: Container(
-        color: Colors.red,
-        width: 400,
-        height: 100,
+        margin: const EdgeInsets.all(AppDimens.m),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ShimmerWidgets.rectangleShimmer,
+            const Padding(padding: EdgeInsets.only(top: AppDimens.m)),
+            ShimmerWidgets.generator(
+              height: size.height * .1,
+              width: size.width,
+            ),
+            const Padding(padding: EdgeInsets.only(top: AppDimens.m)),
+            Row(children: [
+              ShimmerWidgets.squareShimmer,
+              const Padding(padding: EdgeInsets.only(left: AppDimens.m)),
+              ShimmerWidgets.squareShimmer,
+              const Spacer(),
+              ShimmerWidgets.squareShimmer,
+              const Padding(padding: EdgeInsets.only(left: AppDimens.m)),
+              ShimmerWidgets.rectangleShimmer,
+            ])
+          ],
+        ),
       ),
       baseColor: AppColors.shimmerBase,
       highlightColor: AppColors.shimmerHighlighted,

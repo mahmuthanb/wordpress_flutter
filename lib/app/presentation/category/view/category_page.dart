@@ -47,10 +47,9 @@ class CategoryPage extends BaseWidget<CategoryCubit, CategoryState> {
               ),
             );
           } else {
-            return Column(
-              children: [
-                Text(viewModel.postList.length.toString()),
-              ],
+            return ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) => const PostCardShimmer(),
             );
           }
         },
