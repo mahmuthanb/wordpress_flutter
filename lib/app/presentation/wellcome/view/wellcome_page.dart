@@ -91,8 +91,8 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                     onEditingComplete: () {
                       bool val = _formKey.currentState!.validate();
                       context.read<WellcomeCubit>().setValid = val;
-                      bool? val2 = context.read<WellcomeCubit>().isValid;
-                      print(val2);
+                      // bool? val2 = context.read<WellcomeCubit>().isValid;
+                      // print(val2);
                     },
                   ),
                 ),
@@ -116,8 +116,10 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                         context
                             .read<WellcomeCubit>()
                             .onSave(_domainController.text)
-                            .then((value) => const HomePage()
-                                .pushAndRemoveUntil(context, (p0) => false));
+                            .then(
+                              (value) => const HomePage()
+                                  .pushAndRemoveUntil(context, (p0) => false),
+                            );
                       }
                     },
                     child: Row(

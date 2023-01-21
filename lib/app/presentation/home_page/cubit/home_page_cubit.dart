@@ -5,13 +5,16 @@ import 'package:wordpress_flutter/app/data/model/category/category_model.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/data/repository/common_repository.dart';
 import 'package:wordpress_flutter/core/base/base_view_model.dart';
+import 'package:wordpress_flutter/core/source/local_data_source.dart';
 
 part 'home_page_state.dart';
 
 @injectable
 class HomePageCubit extends Cubit<HomePageState> {
   final CommonRepository commonRepository;
-  HomePageCubit(this.commonRepository) : super(HomePageInitial()) {
+  final LocalDataSource localDataSource;
+  HomePageCubit(this.commonRepository, this.localDataSource)
+      : super(HomePageInitial()) {
     fetchCategories().then((value) {
       fetchPosts()
           .then((value) => emit(HomePageLoaded(postList, categoriesList)));
@@ -33,4 +36,10 @@ class HomePageCubit extends Cubit<HomePageState> {
         .fetchCategories()
         .then((value) => _categoriesList = value);
   }
+
+  // final domainName = getIt<LocalDataSource>().domain!.split('.');
+  // final headerText = domainName[1] + domainName[2];
+  List<String> get domain => localDataSource.domain!.split('.');
+  // TODO You can change your app title from here
+  String get headerText => (domain[1] + domain[2]).toUpperCase();
 }
