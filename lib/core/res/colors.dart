@@ -9,8 +9,8 @@ class AppColors {
   static const Color green = Color(0xFF13c316);
   static const Color blue = Color(0xFF2196F3);
   static const Color transparent = Color(0x00000000);
-  static const Color shimmerBase = Color(0xFFF5F5F5); // grey.shade100
-  static const Color shimmerHighlighted = Color(0xFFEEEEEE); // grey.shade200
+  static const Color shimmerBase = Color(0xFFEEEEEE); // grey.shade200
+  static const Color shimmerHighlighted = Color(0xFFE0E0E0); // grey.shade300
 
   static const Color scaffoldBackgroundColor =
       Color.fromARGB(255, 247, 247, 247);

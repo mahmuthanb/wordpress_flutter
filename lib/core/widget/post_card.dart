@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:html_unescape/html_unescape.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
+import 'package:wordpress_flutter/app/presentation/post_detail/post_detail.dart';
+import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
-import 'package:route_map/route_map.dart';
+import 'package:wordpress_flutter/app/router.routes.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class PostCard extends StatelessWidget {
@@ -13,9 +16,7 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => PostDetailPage(
-        postData: data,
-      ).push(),
+      onTap: () => PostDetailPage(data).push(context),
       child: Card(
         elevation: 0,
         color: Colors.transparent,
@@ -73,6 +74,23 @@ class PostCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class PostCardShimmer extends StatelessWidget {
+  const PostCardShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      child: Container(
+        color: Colors.red,
+        width: 400,
+        height: 100,
+      ),
+      baseColor: AppColors.shimmerBase,
+      highlightColor: AppColors.shimmerHighlighted,
     );
   }
 }
