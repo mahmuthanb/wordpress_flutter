@@ -105,7 +105,7 @@ class HomePageNewView extends StatelessWidget {
                     child: ListView.separated(
                       itemCount: postList.length,
                       separatorBuilder: (context, index) => const Divider(
-                        // height: AppDimens.xxs,
+                        height: AppDimens.xxs,
                         color: AppColors.darkGrey,
                         thickness: .5,
                       ),
@@ -114,66 +114,60 @@ class HomePageNewView extends StatelessWidget {
                         return Card(
                           elevation: 0,
                           color: Colors.transparent,
-                          child: Container(
-                            // margin: const EdgeInsets.all(AppDimens.m),
-                            child: Column(
-                              children: [
-                                Container(
-                                  color: Colors.red,
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: AppDimens.s),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: size.width * .90,
-                                        child: Text(
-                                          HtmlUnescape().convert(
-                                              data.title!.rendered.toString()),
-                                          overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          textAlign: TextAlign.left,
-                                          maxLines: 1,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    (data.excerpt != null &&
-                                            data.excerpt!.rendered != null)
-                                        ? SizedBox(
-                                            width: size.width * .9,
-                                            height: size.height * .125,
-                                            child: Center(
-                                              child: Html(
-                                                data: data.excerpt!.rendered,
-                                              ),
+                          margin: const EdgeInsets.symmetric(
+                            vertical: AppDimens.m,
+                            horizontal: AppDimens.m,
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: size.width * .90,
+                                    child: Text(
+                                      HtmlUnescape().convert(
+                                          data.title!.rendered.toString()),
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.left,
+                                      maxLines: 1,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  (data.excerpt != null &&
+                                          data.excerpt!.rendered != null)
+                                      ? SizedBox(
+                                          width: size.width * .9,
+                                          height: size.height * .125,
+                                          child: Center(
+                                            child: Html(
+                                              data: data.excerpt!.rendered,
                                             ),
-                                          )
-                                        : Container(),
+                                          ),
+                                        )
+                                      : Container(),
+                                ],
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(top: AppDimens.m),
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.favorite_outline),
+                                    const SizedBox(width: AppDimens.m),
+                                    const Icon(Icons.volume_up),
+                                    const Spacer(),
+                                    const Icon(Icons.schedule),
+                                    const SizedBox(width: AppDimens.xs),
+                                    Text(timeago.format(data.date!)),
                                   ],
                                 ),
-                                Container(
-                                  color: Colors.red,
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: AppDimens.s),
-                                  child: Row(
-                                    children: [
-                                      const Icon(Icons.favorite_outline),
-                                      const SizedBox(width: AppDimens.m),
-                                      const Icon(Icons.volume_up),
-                                      const Spacer(),
-                                      const Icon(Icons.schedule),
-                                      const SizedBox(width: AppDimens.xs),
-                                      Text(timeago.format(data.date!)),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
+                              )
+                            ],
                           ),
                         );
                       },
