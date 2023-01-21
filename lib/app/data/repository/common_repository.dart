@@ -5,7 +5,7 @@ import 'package:wordpress_flutter/app/data/service/api_service.dart';
 
 abstract class CommonRepository {
   Future<List<PostModel>> fetchPosts();
-  Future<List<PostModel>> fetchPostsByCategory();
+  Future<List<PostModel>> fetchPostsByCategory(List<int> data);
   Future<List<CategoryModel>> fetchCategories();
 }
 
@@ -20,8 +20,8 @@ class CommonRepositoryImpl implements CommonRepository {
   }
 
   @override
-  Future<List<PostModel>> fetchPostsByCategory() {
-    return _apiService.fetchPosts();
+  Future<List<PostModel>> fetchPostsByCategory(List<int> list) {
+    return _apiService.fetchPostsByCategory(list);
   }
 
   @override

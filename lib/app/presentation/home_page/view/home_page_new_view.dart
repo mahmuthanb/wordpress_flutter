@@ -11,6 +11,7 @@ import 'package:wordpress_flutter/app/router.routes.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/res/text_style.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:wordpress_flutter/core/widget/post_card.dart';
 
 class HomePageNewView extends StatelessWidget {
   const HomePageNewView(
@@ -79,8 +80,7 @@ class HomePageNewView extends StatelessWidget {
                             const SizedBox(width: AppDimens.xxs),
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                            onTap: () => CategoryPage(
-                                    category: categoriesList[index].name!)
+                            onTap: () => CategoryPage(categoriesList[index])
                                 .push(context),
                             child: Container(
                               margin: const EdgeInsets.symmetric(
@@ -111,65 +111,7 @@ class HomePageNewView extends StatelessWidget {
                       ),
                       itemBuilder: (context, index) {
                         PostModel data = postList[index];
-                        return Card(
-                          elevation: 0,
-                          color: Colors.transparent,
-                          margin: const EdgeInsets.symmetric(
-                            vertical: AppDimens.m,
-                            horizontal: AppDimens.m,
-                          ),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: size.width * .90,
-                                    child: Text(
-                                      HtmlUnescape().convert(
-                                          data.title!.rendered.toString()),
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      textAlign: TextAlign.left,
-                                      maxLines: 1,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  (data.excerpt != null &&
-                                          data.excerpt!.rendered != null)
-                                      ? SizedBox(
-                                          width: size.width * .9,
-                                          height: size.height * .125,
-                                          child: Center(
-                                            child: Html(
-                                              data: data.excerpt!.rendered,
-                                            ),
-                                          ),
-                                        )
-                                      : Container(),
-                                ],
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(top: AppDimens.m),
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.favorite_outline),
-                                    const SizedBox(width: AppDimens.m),
-                                    const Icon(Icons.volume_up),
-                                    const Spacer(),
-                                    const Icon(Icons.schedule),
-                                    const SizedBox(width: AppDimens.xs),
-                                    Text(timeago.format(data.date!)),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        );
+                        return PostCard(data);
                       },
                     ),
                   ),

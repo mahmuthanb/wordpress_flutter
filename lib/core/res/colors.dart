@@ -14,6 +14,7 @@ class AppColors {
 
   static const Color scaffoldBackgroundColor =
       Color.fromARGB(255, 247, 247, 247);
+  static const Color categoryBasedScaffoldColor = Color(0xFFBFECFF);
   static const Color darkGrey = Color(0xFF444444);
   static const Color lightGrey = Color(0xFFBCBCBC);
   static const Color darkerThenGrey = Color(0xFF1C1B25);

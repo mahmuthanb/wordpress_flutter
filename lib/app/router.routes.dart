@@ -21,7 +21,7 @@ final Map<String, RouteModel> _routes = {
   ),
   RouteMaps.category: RouteModel(
     (c) => CategoryPage(
-      category: c.routeArgs()?["category"],
+      c.routeArgs()?["cat"],
     ),
   ),
   RouteMaps.root: RouteModel(
@@ -115,7 +115,7 @@ extension HomePageExtension on HomePage {
 
 extension CategoryPageExtension on CategoryPage {
   Object get _args => {
-        "category": category,
+        "cat": cat,
       };
   Future<T?> push<T extends Object?>(
     BuildContext context, {
