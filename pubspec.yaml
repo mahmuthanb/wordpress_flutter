@@ -44,7 +44,7 @@ dependencies:
   html_unescape: ^2.0.0
   http: ^0.13.5
   injectable: ^2.1.0
-  intl: ^0.18.0
+  intl: ^0.17.0
   json_annotation: ^4.7.0
   marquee: ^2.2.3
   modal_bottom_sheet: ^2.1.2
@@ -53,6 +53,7 @@ dependencies:
   retrofit: ^3.3.1
   route_map: ^0.0.5
   shimmer: ^2.0.0
+  timeago: ^3.3.0
   webview_flutter: ^2.0.4
 
 dev_dependencies:
