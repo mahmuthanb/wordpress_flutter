@@ -8,11 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
 import 'package:wordpress_flutter/app/presentation/category/view/category_page.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/view/wellcome_page.dart';
+import 'package:wordpress_flutter/app/presentation/post_detail/view/post_detail_screen.dart';
 
 class RouteMaps {
   static String home = "home";
   static String category = "category";
   static String root = "/";
+  static String postDetailPage = "/post_detail_page";
 }
 
 final Map<String, RouteModel> _routes = {
@@ -26,6 +28,11 @@ final Map<String, RouteModel> _routes = {
   ),
   RouteMaps.root: RouteModel(
     (_) => const WellcomePage(),
+  ),
+  RouteMaps.postDetailPage: RouteModel(
+    (c) => PostDetailPage(
+      c.routeArgs()?["post"],
+    ),
   ),
 };
 Route? $onGenerateRoute(RouteSettings routeSettings) {
@@ -248,4 +255,86 @@ extension WellcomePageExtension on WellcomePage {
   }) =>
       Navigator.of(context, rootNavigator: rootNavigator)
           .restorablePushReplacementNamed(RouteMaps.root);
+}
+
+extension PostDetailPageExtension on PostDetailPage {
+  Object get _args => {
+        "post": post,
+      };
+  Future<T?> push<T extends Object?>(
+    BuildContext context, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator).pushNamed(
+        RouteMaps.postDetailPage,
+        arguments: _args,
+      );
+  Future<T?> pushReplacement<T extends Object?, TO extends Object?>(
+    BuildContext context, {
+    bool rootNavigator = false,
+    TO? result,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator).pushReplacementNamed(
+        RouteMaps.postDetailPage,
+        result: result,
+        arguments: _args,
+      );
+  Future<T?> popAndPush<T extends Object?, TO extends Object?>(
+    BuildContext context, {
+    bool rootNavigator = false,
+    TO? result,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator).popAndPushNamed(
+        RouteMaps.postDetailPage,
+        result: result,
+        arguments: _args,
+      );
+  Future<T?> pushAndRemoveUntil<T extends Object?>(
+    BuildContext context,
+    bool Function(Route<dynamic>) predicate, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator)
+          .pushNamedAndRemoveUntil(
+        RouteMaps.postDetailPage,
+        predicate,
+        arguments: _args,
+      );
+  String restorablePush(
+    BuildContext context, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator).restorablePushNamed(
+        RouteMaps.postDetailPage,
+        arguments: _args,
+      );
+  String restorablePushAndRemoveUntil<T extends Object?>(
+    BuildContext context,
+    bool Function(Route<dynamic>) predicate, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator)
+          .restorablePushNamedAndRemoveUntil(
+        RouteMaps.postDetailPage,
+        predicate,
+        arguments: _args,
+      );
+  String restorablePopAndPush(
+    BuildContext context, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator)
+          .restorablePopAndPushNamed(
+        RouteMaps.postDetailPage,
+        arguments: _args,
+      );
+  String restorablePushReplacement(
+    BuildContext context, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator)
+          .restorablePushReplacementNamed(
+        RouteMaps.postDetailPage,
+        arguments: _args,
+      );
 }
