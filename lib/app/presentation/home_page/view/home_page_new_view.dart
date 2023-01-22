@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:html_unescape/html_unescape.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wordpress_flutter/app/data/model/category/category_model.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/presentation/category/view/category_page.dart';
+import 'package:wordpress_flutter/app/presentation/settings/view/settings_view.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/app/router.routes.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/res/styles.dart';
-import 'package:timeago/timeago.dart' as timeago;
 import 'package:wordpress_flutter/core/widget/post_card.dart';
 
 class HomePageNewView extends StatelessWidget {
@@ -37,7 +35,7 @@ class HomePageNewView extends StatelessWidget {
           centerTitle: false,
           actions: [
             IconButton(
-              onPressed: () => Scaffold.of(context).openDrawer(),
+              onPressed: () => const SettingsPage().push(context),
               icon: const Icon(Icons.menu),
               color: AppColors.darkerThenGrey,
             )
