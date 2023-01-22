@@ -14,13 +14,19 @@ import 'package:wordpress_flutter/core/util/validator.dart';
 class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
   const WellcomePage({super.key});
 
+  // @override
+  // onModelReady(BuildContext context, WellcomeCubit viewModel) {
+  //   if (viewModel.checkDomainRegistered() == true) {
+  //     const HomePage().pushAndRemoveUntil(context, (p0) => false);
+  //   }
+  //   return super.onModelReady(context, viewModel);
+  // }
+
   @override
   Widget build(
       BuildContext context, WellcomeCubit viewModel, WellcomeState state) {
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     final TextEditingController _domainController = TextEditingController();
-    final String? domain = getIt<LocalDataSource>().domain;
-    _domainController.text = domain ?? "Enter your domain";
     bool? isValid = viewModel.isValid;
     return Scaffold(
         backgroundColor: Colors.lightGreen.shade200,
@@ -58,6 +64,7 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                   child: const Text(
                       "Browse the best news on latest strategies, trends various tools and news in the world"),
                 ),
+                const Spacer(flex: 1),
                 Form(
                   key: _formKey,
                   child: TextFormField(
@@ -96,9 +103,7 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                     },
                   ),
                 ),
-                const SizedBox(
-                  height: AppDimens.l,
-                ),
+                const Spacer(flex: 2),
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.yellow.shade200,
@@ -164,6 +169,7 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                     ),
                   ),
                 ),
+                const Spacer(flex: 2)
               ],
             ),
           ),

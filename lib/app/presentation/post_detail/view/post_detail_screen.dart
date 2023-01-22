@@ -28,7 +28,7 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
       appBar: AppBar(
         leadingWidth: size.width * .075,
         title: SizedBox(
-          width: size.width * .85,
+          width: size.width * .95,
           height: AppBar().preferredSize.height,
           child: Center(
             child: Marquee(
@@ -56,11 +56,7 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
       ),
       body: Column(
         children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: size.width * .05),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-            width: size.width,
-            height: size.height,
+          Expanded(
             child: SingleChildScrollView(
               child: Html(
                 onLinkTap: (String? url, RenderContext ctx,
