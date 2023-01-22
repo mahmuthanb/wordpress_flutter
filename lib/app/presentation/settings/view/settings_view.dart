@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:route_map/route_map.dart';
 import 'package:wordpress_flutter/app/presentation/settings/cubit/settings_cubit.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
+import 'package:wordpress_flutter/core/widget/shimmer.dart';
 
 @RouteMap()
 class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
@@ -11,33 +12,44 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
   Widget build(
       BuildContext context, SettingsCubit viewModel, SettingsState state) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Settings"),
-      ),
-      body: ListView(
-        children: const [
-          ListTile(
-            title: Text("Domain"),
-            subtitle: Text("www.mahmuthan.com"),
-          ),
-          ListTile(
-            title: Text("App Name"),
-            subtitle: Text("WordPress Flutter"),
-          ),
-          ListTile(
-            title: Text("Version Number"),
-            subtitle: Text("v1.2.3"),
-          ),
-          ListTile(
-            title: Text("Build Number"),
-            subtitle: Text("50"),
-          ),
-          ListTile(
-            title: Text("Locale"),
-            subtitle: Text("tr_TR"),
-          ),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: const Text("Settings"),
+        ),
+        body: Builder(
+          builder: (context) {
+            if (state is SettingsReady) {
+              return ListView(
+                children: [
+                  ListTile(
+                    title: const Text("Domain"),
+                    subtitle: Text(state.domain!),
+                  ),
+                  ListTile(
+                    title: const Text("App Name"),
+                    subtitle: Text(state.packageInfo.appName),
+                  ),
+                  ListTile(
+                    title: const Text("Package Name"),
+                    subtitle: Text(state.packageInfo.packageName),
+                  ),
+                  ListTile(
+                    title: const Text("Version Number"),
+                    subtitle: Text(state.packageInfo.version),
+                  ),
+                  ListTile(
+                    title: const Text("Build Number"),
+                    subtitle: Text(state.packageInfo.buildNumber),
+                  ),
+                  ListTile(
+                    title: const Text("Locale"),
+                    subtitle: Text(state.locale!),
+                  ),
+                ],
+              );
+            } else {
+              return ShimmerWidgets.rectangleShimmer;
+            }
+          },
+        ));
   }
 }
