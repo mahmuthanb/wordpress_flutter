@@ -9,7 +9,10 @@ import 'package:wordpress_flutter/core/widget/post_card.dart';
 
 @RouteMap(name: 'category')
 class CategoryPage extends BaseWidget<CategoryCubit, CategoryState> {
-  const CategoryPage(this.cat, {super.key});
+  const CategoryPage({
+    required this.cat,
+    super.key,
+  });
 
   @override
   onModelReady(BuildContext context, CategoryCubit viewModel) {

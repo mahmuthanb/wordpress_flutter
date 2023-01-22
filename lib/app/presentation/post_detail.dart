@@ -8,6 +8,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:get/get.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
+import 'package:wordpress_flutter/core/res/styles.dart';
 import 'package:wordpress_flutter/core/widget/image_view.dart';
 
 class PostDetailPage extends StatefulWidget {
@@ -75,84 +76,83 @@ class _PostDetailPageState extends State<PostDetailPage> {
             height: realHeight,
             child: SingleChildScrollView(
               child: Html(
-                onLinkTap: (String? url, RenderContext ctx,
-                    Map<String, String> attributes, dom.Element? element) {
-                  var pageLoading = true.obs;
-                  final urlWithoutWWW = url!.replaceAll(RegExp('www.'), '');
-                  showMaterialModalBottomSheet(
-                      context: context,
-                      enableDrag: false,
-                      builder: (builder) {
-                        return SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          child: SizedBox(
-                            height: size.height * .75,
-                            width: size.width,
-                            child: WebView(
-                              key: Key(urlWithoutWWW),
-                              initialUrl: urlWithoutWWW,
-                              javascriptMode: JavascriptMode.unrestricted,
-                              onPageStarted: (urlWithoutWWW) {
-                                pageLoading(true);
-                                printInfo(info: "Page load started");
-                              },
-                              onWebViewCreated: (controller) {
-                                this.controller = controller;
-                              },
-                              onPageFinished: (finish) {
-                                printError(info: "Page load finished");
-                              },
+                  onLinkTap: (String? url, RenderContext ctx,
+                      Map<String, String> attributes, dom.Element? element) {
+                    var pageLoading = true.obs;
+                    final urlWithoutWWW = url!.replaceAll(RegExp('www.'), '');
+                    showMaterialModalBottomSheet(
+                        context: context,
+                        enableDrag: false,
+                        builder: (builder) {
+                          return SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: SizedBox(
+                              height: size.height * .75,
+                              width: size.width,
+                              child: WebView(
+                                key: Key(urlWithoutWWW),
+                                initialUrl: urlWithoutWWW,
+                                javascriptMode: JavascriptMode.unrestricted,
+                                onPageStarted: (urlWithoutWWW) {
+                                  pageLoading(true);
+                                  printInfo(info: "Page load started");
+                                },
+                                onWebViewCreated: (controller) {
+                                  this.controller = controller;
+                                },
+                                onPageFinished: (finish) {
+                                  printError(info: "Page load finished");
+                                },
+                              ),
                             ),
-                          ),
-                        );
-                      });
-                },
-                onImageTap: (url, context, attributes, element) {
-                  printInfo(info: "Resim tıklandı");
-                  Get.to(() => ImageView(url: url!));
-                },
-                onImageError: (exception, stackTrace) {
-                  exception.printInfo();
-                  const snackBar = SnackBar(
-                    content: Text('Error while loading an image!'),
-                    duration: Duration(
-                      seconds: 1,
+                          );
+                        });
+                  },
+                  onImageTap: (url, context, attributes, element) {
+                    printInfo(info: "Resim tıklandı");
+                    Get.to(() => ImageView(url: url!));
+                  },
+                  onImageError: (exception, stackTrace) {
+                    exception.printInfo();
+                    const snackBar = SnackBar(
+                      content: Text('Error while loading an image!'),
+                      duration: Duration(
+                        seconds: 1,
+                      ),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  data: widget.postData.content!.rendered,
+                  style: {
+                    "p": Style(
+                      padding: const EdgeInsets.only(left: 10),
+                      fontWeight: FontWeight.bold,
                     ),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                },
-                data: widget.postData.content!.rendered,
-                style: {
-                  "p": Style(
-                    padding: const EdgeInsets.only(left: 10),
-                    fontWeight: FontWeight.bold,
-                  ),
-                  "ol": Style(
-                    border: Border.all(
-                      color: Colors.cyanAccent,
-                      width: 2,
+                    "ol": Style(
+                      border: Border.all(
+                        color: Colors.cyanAccent,
+                        width: 2,
+                      ),
                     ),
-                  ),
-                  "ul": Style(
-                    fontWeight: FontWeight.bold,
-                  ),
-                  "li": Style(
-                    listStyleType: ListStyleType.LOWER_ALPHA,
-                  ),
-                  "pre,code": Style(
-                    whiteSpace: WhiteSpace.NORMAL,
-                    padding: const EdgeInsets.all(5),
-                    border: Border.all(
-                      color: Colors.grey.shade300,
-                      style: BorderStyle.solid,
-                      width: 2,
+                    "ul": Style(
+                      fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  "figure,img": Style(
-                    backgroundColor: Colors.amberAccent,
-                  )
-                },
-              ),
+                    "li": Style(
+                      listStyleType: ListStyleType.lowerAlpha,
+                    ),
+                    "pre,code": Style(
+                      whiteSpace: WhiteSpace.normal,
+                      padding: const EdgeInsets.all(5),
+                      border: Border.all(
+                        color: Colors.grey.shade300,
+                        style: BorderStyle.solid,
+                        width: 2,
+                      ),
+                    ),
+                    "figure,img": Style(
+                      backgroundColor: Colors.amberAccent,
+                    ),
+                  }),
             ),
           )
         ],

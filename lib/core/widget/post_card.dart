@@ -17,7 +17,7 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => PostDetailPage(data).push(context),
+      onTap: () => PostDetailPage(post: data).push(context),
       child: Card(
         elevation: 0,
         color: Colors.transparent,

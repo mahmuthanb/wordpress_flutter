@@ -78,8 +78,9 @@ class HomePageNewView extends StatelessWidget {
                             const SizedBox(width: AppDimens.xxs),
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                            onTap: () => CategoryPage(categoriesList[index])
-                                .push(context),
+                            onTap: () =>
+                                CategoryPage(cat: categoriesList[index])
+                                    .push(context),
                             child: Container(
                               margin: const EdgeInsets.symmetric(
                                 vertical: AppDimens.xs,

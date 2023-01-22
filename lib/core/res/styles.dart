@@ -24,10 +24,10 @@ class AppWebviewStyle {
       fontWeight: FontWeight.bold,
     ),
     "li": Style(
-      listStyleType: ListStyleType.LOWER_ALPHA,
+      listStyleType: ListStyleType.lowerAlpha,
     ),
     "pre,code": Style(
-      whiteSpace: WhiteSpace.NORMAL,
+      whiteSpace: WhiteSpace.normal,
       padding: const EdgeInsets.all(5),
       border: Border.all(
         color: Colors.grey.shade300,

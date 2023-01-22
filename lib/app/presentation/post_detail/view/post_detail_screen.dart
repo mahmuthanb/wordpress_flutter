@@ -14,8 +14,8 @@ import 'package:wordpress_flutter/core/res/styles.dart';
 
 @RouteMap()
 class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
-  const PostDetailPage(
-    this.post, {
+  const PostDetailPage({
+    required this.post,
     super.key,
   });
   final PostModel post;
@@ -60,7 +60,7 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
             child: SingleChildScrollView(
               child: Html(
                 onLinkTap: (String? url, RenderContext ctx,
-                    Map<String, String> attributes, element) {
+                    Map<String, String> attributes, _) {
                   // var pageLoading = true.obs;
                   final urlWithoutWWW = url!.replaceAll(RegExp('www.'), '');
                   showMaterialModalBottomSheet(
@@ -106,7 +106,7 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 data: post.content!.rendered,
-                style: AppWebviewStyle.htmlStyle,
+                // style: AppWebviewStyle.htmlStyle,
               ),
             ),
           )
