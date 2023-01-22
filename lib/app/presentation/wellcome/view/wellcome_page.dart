@@ -5,22 +5,13 @@ import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/cubit/wellcome_cubit.dart';
 import 'package:wordpress_flutter/app/router.routes.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
-import 'package:wordpress_flutter/core/di/locator.dart';
+import 'package:wordpress_flutter/core/res/decorations.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
-import 'package:wordpress_flutter/core/source/local_data_source.dart';
 import 'package:wordpress_flutter/core/util/validator.dart';
 
 @RouteMap(name: "/")
 class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
   const WellcomePage({super.key});
-
-  // @override
-  // onModelReady(BuildContext context, WellcomeCubit viewModel) {
-  //   if (viewModel.checkDomainRegistered() == true) {
-  //     const HomePage().pushAndRemoveUntil(context, (p0) => false);
-  //   }
-  //   return super.onModelReady(context, viewModel);
-  // }
 
   @override
   Widget build(
@@ -40,8 +31,9 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                 RichText(
                   text: TextSpan(
                     text: 'Latest article \nwith ',
-                    style: DefaultTextStyle.of(context)
-                        .style
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
                         .copyWith(fontSize: 44),
                     children: [
                       TextSpan(
@@ -68,31 +60,7 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                 Form(
                   key: _formKey,
                   child: TextFormField(
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                          style: BorderStyle.solid,
-                        ),
-                      ),
-                      labelText: "Domain",
-                      hintText: 'http:// or https://',
-                      labelStyle: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      suffixIcon: (isValid == null)
-                          ? const Icon(Icons.question_mark)
-                          : (isValid == true)
-                              ? const Icon(
-                                  Icons.verified_user,
-                                  color: Colors.green,
-                                )
-                              : const Icon(
-                                  Icons.close,
-                                  color: Colors.red,
-                                ),
-                    ),
+                    decoration: AppDecorations.domainInputDecoration,
                     controller: _domainController,
                     validator: Validator.url,
                     onEditingComplete: () {
@@ -102,6 +70,20 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                       // print(val2);
                     },
                   ),
+                ),
+                const SizedBox(height: AppDimens.l),
+                DropdownButtonFormField<Locale>(
+                  decoration: AppDecorations.languageSelectorInputDecoration,
+                  value: viewModel.deviceLocale,
+                  items: viewModel.listOfLocales
+                      .map(
+                        (Locale e) => DropdownMenuItem<Locale>(
+                          value: e,
+                          child: Text(e.languageCode),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (val) {},
                 ),
                 const Spacer(flex: 2),
                 Container(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:route_map/route_map.dart';
-import 'package:wordpress_flutter/app/presentation/category/category.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/view/home_page_new_view.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
