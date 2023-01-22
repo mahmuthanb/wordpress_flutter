@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:route_map/route_map.dart';
 import 'package:wordpress_flutter/app/presentation/settings/cubit/settings_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/widget/shimmer.dart';
 
@@ -44,6 +45,10 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
                     title: const Text("Locale"),
                     subtitle: Text(state.locale!),
                   ),
+                  ListTile(
+                    title: Text("AppName in [${state.locale}]"),
+                    subtitle: Text(AppLocalizations.of(context).appTitle),
+                  )
                 ],
               );
             } else {
