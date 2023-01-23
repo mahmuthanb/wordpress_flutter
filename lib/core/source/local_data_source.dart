@@ -4,6 +4,9 @@ import 'package:injectable/injectable.dart';
 abstract class LocalDataSource {
   String? get domain;
   Future setDomain(String? domain);
+
+  bool? get darkTheme;
+  Future setDarkTheme(bool status);
 }
 
 @Environment(Environment.prod)
@@ -18,5 +21,13 @@ class LocalDataSourceImpl implements LocalDataSource {
   @override
   Future setDomain(String? domain) {
     return _getStorage.write("domain", domain);
+  }
+
+  @override
+  bool? get darkTheme => _getStorage.read("darkTheme");
+
+  @override
+  Future setDarkTheme(bool status) {
+    return _getStorage.write("darkTheme", status);
   }
 }
