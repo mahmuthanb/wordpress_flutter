@@ -33,11 +33,12 @@ dependencies:
   cupertino_icons: ^1.0.5
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   flutter_bloc: ^8.1.1
   flutter_html: ^3.0.0-alpha.6
   flutter_inappwebview: ^5.7.2+3
+  flutter_localizations:
+    sdk: flutter
+  flutter_switch: ^0.3.2
   freezed: ^2.3.2
   get: ^4.6.5
   get_it: ^7.2.0
