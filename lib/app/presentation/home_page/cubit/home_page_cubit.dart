@@ -40,7 +40,7 @@ class HomePageCubit extends Cubit<HomePageState> {
   bool get isDark => localDataSource.darkTheme ?? false;
   set changeTheme(bool value) {
     localDataSource.setDarkTheme(value);
-    emit(state);
+    emit(HomePageLoaded(postList, categoriesList));
   }
 
   List<String> get domain => localDataSource.domain!.split('.');

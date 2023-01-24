@@ -27,7 +27,7 @@ class LocalDataSourceImpl implements LocalDataSource {
   bool? get darkTheme => _getStorage.read("darkTheme");
 
   @override
-  setDarkTheme(bool status) {
+  Future setDarkTheme(bool status) {
     return _getStorage.write("darkTheme", status);
   }
 }
