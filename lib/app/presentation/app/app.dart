@@ -5,6 +5,7 @@ import 'package:wordpress_flutter/app/router.dart';
 import 'package:wordpress_flutter/app/router.routes.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
+import 'package:wordpress_flutter/core/res/theme.dart';
 
 class App extends BaseWidget<InternetCubit, InternetState> {
   const App({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class App extends BaseWidget<InternetCubit, InternetState> {
       BuildContext context, InternetCubit viewModel, InternetState state) {
     return MaterialApp(
       title: 'WordPress in Flutter',
-      theme: ThemeData(primarySwatch: AppColors.primarySwatch),
+      theme: AppTheme.theme(isDark: viewModel.isDark),
       debugShowCheckedModeBanner: false,
       initialRoute:
           viewModel.domainRegistered ? RouteMaps.home : RouteMaps.root,
