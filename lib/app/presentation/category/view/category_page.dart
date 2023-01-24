@@ -34,7 +34,9 @@ class CategoryPage extends BaseWidget<CategoryCubit, CategoryState> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.volume_up)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
         ],
-        backgroundColor: AppColors.categoryBasedScaffoldColor,
+        backgroundColor: viewModel.isDark
+            ? AppColors.categoryBasedScaffoldColorDark
+            : AppColors.categoryBasedScaffoldColor,
       ),
       body: Builder(
         builder: (context) {

@@ -4,13 +4,18 @@ import 'package:meta/meta.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/data/repository/common_repository.dart';
 import 'package:wordpress_flutter/core/base/base_view_model.dart';
+import 'package:wordpress_flutter/core/source/local_data_source.dart';
 
 part 'category_state.dart';
 
 @injectable
 class CategoryCubit extends Cubit<CategoryState> {
   final CommonRepository commonRepository;
-  CategoryCubit(this.commonRepository) : super(CategoryInitial());
+  final LocalDataSource localDataSource;
+  CategoryCubit(
+    this.commonRepository,
+    this.localDataSource,
+  ) : super(CategoryInitial());
 
   List<PostModel> _postList = [];
   List<PostModel> get postList => _postList;
@@ -24,4 +29,7 @@ class CategoryCubit extends Cubit<CategoryState> {
           }
         });
   }
+
+  bool get isDark => localDataSource.darkTheme ?? false;
+  set changeTheme(bool value) => localDataSource.setDarkTheme(value);
 }
