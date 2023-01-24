@@ -38,7 +38,10 @@ class HomePageCubit extends Cubit<HomePageState> {
   }
 
   bool get isDark => localDataSource.darkTheme ?? false;
-  set changeTheme(bool value) => localDataSource.setDarkTheme(value);
+  set changeTheme(bool value) {
+    localDataSource.setDarkTheme(value);
+    emit(state);
+  }
 
   List<String> get domain => localDataSource.domain!.split('.');
   // TODO You can change your app title from here
