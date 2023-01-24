@@ -36,6 +36,9 @@ class InternetCubit extends Cubit<InternetState> {
 
   bool get domainRegistered => checkDomainRegistered();
 
+  bool get isDark => localDataSource.darkTheme ?? false;
+  set changeTheme(bool value) => localDataSource.setDarkTheme(value);
+
   void emitInternetConnected(ConnectivityResult connectivityResult) =>
       emit(InternetConnected(connectivityResult: connectivityResult));
 
