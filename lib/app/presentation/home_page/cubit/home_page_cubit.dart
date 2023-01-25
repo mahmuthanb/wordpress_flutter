@@ -43,12 +43,6 @@ class HomePageCubit extends Cubit<HomePageState> {
     emit(HomePageLoaded(postList, categoriesList));
   }
 
-  bool get isDark => localDataSource.darkTheme ?? false;
-  set changeTheme(bool value) {
-    localDataSource.setDarkTheme(value);
-    emit(HomePageLoaded(postList, categoriesList));
-  }
-
   List<String> get domain => localDataSource.domain!.split('.');
   // TODO You can change your app title from here
   String get headerText => (domain[1] + domain[2]).toUpperCase();

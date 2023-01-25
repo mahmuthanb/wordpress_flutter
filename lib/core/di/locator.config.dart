@@ -5,32 +5,47 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:connectivity_plus/connectivity_plus.dart' as _i5;
-import 'package:dio/dio.dart' as _i6;
+import 'package:connectivity_plus/connectivity_plus.dart' as _i6;
+import 'package:dio/dio.dart' as _i7;
 import 'package:get_it/get_it.dart' as _i1;
+import 'package:get_storage/get_storage.dart' as _i8;
 import 'package:injectable/injectable.dart' as _i2;
+import 'package:wordpress_flutter/app/data/repository/common_repository.dart'
+    as _i5;
 import 'package:wordpress_flutter/app/data/repository/posts_repository.dart'
-    as _i8;
-import 'package:wordpress_flutter/app/data/service/api_service.dart' as _i3;
+    as _i11;
+import 'package:wordpress_flutter/app/data/service/api_service/api_service.dart'
+    as _i3;
 import 'package:wordpress_flutter/app/presentation/app/cubit/test_cubit.dart'
-    as _i9;
+    as _i13;
+import 'package:wordpress_flutter/app/presentation/category/cubit/category_cubit.dart'
+    as _i15;
 import 'package:wordpress_flutter/app/presentation/connectivity/cubit/internet_cubit.dart'
-    as _i7;
+    as _i17;
+import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart'
+    as _i16;
+import 'package:wordpress_flutter/app/presentation/post_detail/cubit/post_detail_cubit.dart'
+    as _i10;
+import 'package:wordpress_flutter/app/presentation/settings/cubit/settings_cubit.dart'
+    as _i12;
+import 'package:wordpress_flutter/app/presentation/wellcome/cubit/wellcome_cubit.dart'
+    as _i14;
 import 'package:wordpress_flutter/core/config.dart' as _i4;
-import 'package:wordpress_flutter/core/di/app_module.dart' as _i10;
+import 'package:wordpress_flutter/core/di/app_module.dart' as _i18;
+import 'package:wordpress_flutter/core/source/local_data_source.dart' as _i9;
 
+const String _dev = 'dev';
 const String _prod = 'prod';
 const String _test = 'test';
-const String _dev = 'dev';
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
 extension GetItInjectableX on _i1.GetIt {
   /// initializes the registration of main-scope dependencies inside of [GetIt]
-  _i1.GetIt init({
+  Future<_i1.GetIt> init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
-  }) {
+  }) async {
     final gh = _i2.GetItHelper(
       this,
       environment,
@@ -39,25 +54,57 @@ extension GetItInjectableX on _i1.GetIt {
     final appModule = _$AppModule();
     gh.lazySingleton<_i3.ApiService>(() => appModule.injectApiService);
     gh.lazySingleton<_i4.AppConfig>(
-      () => _i4.ProdAppConfigImpl(),
-      registerFor: {_prod},
-    );
-    gh.lazySingleton<_i4.AppConfig>(
       () => _i4.TestAppConfigImpl(),
+      registerFor: {_test},
+    );
+    gh.lazySingleton<_i5.CommonRepository>(
+        () => _i5.CommonRepositoryImpl(gh<_i3.ApiService>()));
+    gh.lazySingleton<_i6.Connectivity>(() => appModule.connectivity);
+    gh.lazySingleton<_i7.Dio>(() => appModule.injectRetrofitAPI);
+    await gh.factoryAsync<_i8.GetStorage>(
+      () => appModule.initializeStorage,
       registerFor: {
-        _test,
+        _dev,
+        _prod,
+      },
+      preResolve: true,
+    );
+    gh.lazySingleton<_i9.LocalDataSource>(
+      () => _i9.LocalDataSourceImpl(gh<_i8.GetStorage>()),
+      registerFor: {
+        _prod,
         _dev,
       },
     );
-    gh.lazySingleton<_i5.Connectivity>(() => appModule.connectivity);
-    gh.singleton<_i6.Dio>(appModule.injectRetrofitAPI);
-    gh.factory<_i7.InternetCubit>(
-        () => _i7.InternetCubit(connectivity: gh<_i5.Connectivity>()));
-    gh.lazySingleton<_i8.PostsRepository>(
-        () => _i8.PostsRepositoryImpl(gh<_i3.ApiService>()));
-    gh.factory<_i9.TestCubit>(() => _i9.TestCubit());
+    gh.factory<_i10.PostDetailCubit>(() => _i10.PostDetailCubit());
+    gh.lazySingleton<_i11.PostsRepository>(
+        () => _i11.PostsRepositoryImpl(gh<_i3.ApiService>()));
+    gh.factory<_i12.SettingsCubit>(
+        () => _i12.SettingsCubit(gh<_i9.LocalDataSource>()));
+    gh.factory<_i13.TestCubit>(() => _i13.TestCubit());
+    gh.factory<_i14.WellcomeCubit>(
+        () => _i14.WellcomeCubit(gh<_i9.LocalDataSource>()));
+    gh.lazySingleton<_i4.AppConfig>(
+      () => _i4.ProdAppConfigImpl(gh<_i9.LocalDataSource>()),
+      registerFor: {
+        _prod,
+        _dev,
+      },
+    );
+    gh.factory<_i15.CategoryCubit>(() => _i15.CategoryCubit(
+          gh<_i5.CommonRepository>(),
+          gh<_i9.LocalDataSource>(),
+        ));
+    gh.factory<_i16.HomePageCubit>(() => _i16.HomePageCubit(
+          gh<_i5.CommonRepository>(),
+          gh<_i9.LocalDataSource>(),
+        ));
+    gh.factory<_i17.InternetCubit>(() => _i17.InternetCubit(
+          connectivity: gh<_i6.Connectivity>(),
+          localDataSource: gh<_i9.LocalDataSource>(),
+        ));
     return this;
   }
 }
 
-class _$AppModule extends _i10.AppModule {}
+class _$AppModule extends _i18.AppModule {}

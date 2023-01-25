@@ -51,39 +51,6 @@ class HomePage extends BaseWidget<HomePageCubit, HomePageState> {
                 ),
                 elevation: 0,
                 centerTitle: false,
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: FlutterSwitch(
-                      width: 70.0,
-                      height: 45.0,
-                      padding: 0,
-                      toggleSize: 45.0,
-                      borderRadius: 30.0,
-                      value: viewModel.isDark,
-                      activeToggleColor: const Color(0xFF6E40C9),
-                      inactiveToggleColor: const Color(0xFF2F363D),
-                      activeSwitchBorder: Border.all(
-                        color: const Color(0xFF3C1E70),
-                      ),
-                      inactiveSwitchBorder: Border.all(
-                        color: const Color(0xFFD1D5DA),
-                        width: 6.0,
-                      ),
-                      activeColor: const Color(0xFF271052),
-                      inactiveColor: Colors.white,
-                      activeIcon: const Icon(
-                        Icons.nightlight_round,
-                        color: Color(0xFFF8E3A1),
-                      ),
-                      inactiveIcon: const Icon(
-                        Icons.wb_sunny,
-                        color: Color(0xFFFFDF5D),
-                      ),
-                      onToggle: (val) => viewModel.changeTheme = val,
-                    ),
-                  )
-                ],
               ),
               backgroundColor: AppColors.primarySwatch,
               body: Builder(
