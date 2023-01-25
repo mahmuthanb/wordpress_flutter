@@ -13,13 +13,12 @@ class AppTheme {
             primarySwatch: AppColors.primarySwatch,
             accentColor: AppColors.primarySwatch),
         toggleableActiveColor: AppColors.primarySwatch,
-
         // scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
         indicatorColor: AppColors.primarySwatch,
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           // elevation: 0,
           centerTitle: false,
-          foregroundColor: Colors.white,
+          foregroundColor: isDark ? Colors.white : Colors.black,
         ),
         // textTheme: textTheme,
         buttonTheme: buttonTheme,
