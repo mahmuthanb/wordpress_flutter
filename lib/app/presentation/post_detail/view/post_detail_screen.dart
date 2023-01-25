@@ -26,7 +26,7 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: size.width * .075,
+        // leadingWidth: size.width * .075,
         title: SizedBox(
           width: size.width * .95,
           height: AppBar().preferredSize.height,

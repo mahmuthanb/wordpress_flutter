@@ -15,26 +15,32 @@ class HomePageCubit extends Cubit<HomePageState> {
   final LocalDataSource localDataSource;
   HomePageCubit(this.commonRepository, this.localDataSource)
       : super(HomePageInitial()) {
-    fetchCategories().then((value) {
-      fetchPosts()
-          .then((value) => emit(HomePageLoaded(postList, categoriesList)));
-    });
+    // fetchCategories().then((value) {
+    //   fetchPosts()
+    //       .then((value) => emit(HomePageLoaded(postList, categoriesList)));
+    // });
   }
 
   List<PostModel> _postList = [];
   List<PostModel> get postList => _postList;
-  Future<List<PostModel>> fetchPosts() {
-    return commonRepository.fetchPosts().then(
+  Future<List<PostModel>> fetchPosts() async {
+    return await commonRepository.fetchPosts().then(
           (value) => _postList = value,
         );
   }
 
   List<CategoryModel> _categoriesList = [];
   List<CategoryModel> get categoriesList => _categoriesList;
-  Future<List<CategoryModel>> fetchCategories() {
-    return commonRepository
+  Future<List<CategoryModel>> fetchCategories() async {
+    return await commonRepository
         .fetchCategories()
         .then((value) => _categoriesList = value);
+  }
+
+  getAll() async {
+    await fetchPosts();
+    await fetchCategories();
+    emit(HomePageLoaded(postList, categoriesList));
   }
 
   bool get isDark => localDataSource.darkTheme ?? false;
