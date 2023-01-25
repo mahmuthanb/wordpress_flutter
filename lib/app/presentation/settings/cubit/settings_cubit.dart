@@ -15,12 +15,14 @@ class SettingsCubit extends Cubit<SettingsState> {
   final LocalDataSource localDataSource;
   String? domain;
   String? locale;
+  bool? theme;
   SettingsCubit(this.localDataSource) : super(SettingsInitial()) {
     PackageInfo.fromPlatform().then(
       (value) {
         locale = Platform.localeName;
         domain = localDataSource.domain;
-        emit(SettingsReady(value, locale!, domain));
+        theme = localDataSource.darkTheme;
+        emit(SettingsReady(value, locale!, domain, theme));
       },
     );
   }

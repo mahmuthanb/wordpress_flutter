@@ -48,6 +48,10 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
                   ListTile(
                     title: Text("AppName in [${state.locale}]"),
                     subtitle: Text(AppLocalizations.of(context).appTitle),
+                  ),
+                  ListTile(
+                    title: const Text("Theme"),
+                    subtitle: Text(state.theme! ? "Dark" : "Light"),
                   )
                 ],
               );

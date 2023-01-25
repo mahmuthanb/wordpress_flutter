@@ -7,20 +7,18 @@ import 'package:wordpress_flutter/core/res/dimensions.dart';
 
 class AppTheme {
   static ThemeData theme({bool isDark = false}) => ThemeData(
-        // useMaterial3: true,
+        useMaterial3: true,
         colorScheme: ColorScheme.fromSwatch(
-            brightness: isDark ? Brightness.dark : Brightness.light,
-            primarySwatch: AppColors.primarySwatch,
-            accentColor: AppColors.primarySwatch),
+          brightness: isDark ? Brightness.dark : Brightness.light,
+          primarySwatch: AppColors.primarySwatch,
+          accentColor: AppColors.primarySwatch,
+        ),
         toggleableActiveColor: AppColors.primarySwatch,
-        // scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
         indicatorColor: AppColors.primarySwatch,
         appBarTheme: AppBarTheme(
-          // elevation: 0,
           centerTitle: false,
           foregroundColor: isDark ? Colors.white : Colors.black,
         ),
-        // textTheme: textTheme,
         buttonTheme: buttonTheme,
         cardTheme: CardTheme(
           clipBehavior: Clip.antiAlias,
