@@ -23,7 +23,7 @@ class LoadingScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            margin: EdgeInsets.all(size.width * .05),
+            margin: EdgeInsets.all(size.width * .1),
             height: size.width * .1,
             width: size.width * .1,
             child: const CircularProgressIndicator(

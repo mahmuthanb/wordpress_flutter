@@ -37,54 +37,19 @@ class HomePageNewView extends StatelessWidget {
             icon: const Icon(Icons.menu),
             color: AppColors.darkerThenGrey,
           ),
-          elevation: 0,
+          // elevation: 0,
           centerTitle: true,
-          // actions: [
-          //   FlutterSwitch(
-          //     width: 100.0,
-          //     height: 45.0,
-          //     padding: 0,
-          //     toggleSize: 45.0,
-          //     borderRadius: 30.0,
-          //     value: true,
-          //     activeToggleColor: const Color(0xFF6E40C9),
-          //     inactiveToggleColor: const Color(0xFF2F363D),
-          //     activeSwitchBorder: Border.all(
-          //       color: const Color(0xFF3C1E70),
-          //       width: 6.0,
-          //     ),
-          //     inactiveSwitchBorder: Border.all(
-          //       color: const Color(0xFFD1D5DA),
-          //       width: 6.0,
-          //     ),
-          //     activeColor: const Color(0xFF271052),
-          //     inactiveColor: Colors.white,
-          //     activeIcon: const Icon(
-          //       Icons.nightlight_round,
-          //       color: Color(0xFFF8E3A1),
-          //     ),
-          //     inactiveIcon: const Icon(
-          //       Icons.wb_sunny,
-          //       color: Color(0xFFFFDF5D),
-          //     ),
-          //     onToggle: (val) {
-          //       // status7 = val;
-          //       if (val) {
-          //         // dark theme enabled
-          //       } else {
-          //         // light theme enabled
-          //       }
-          //     },
-          //   )
-          // ],
         ),
         backgroundColor: AppColors.primarySwatch,
         body: Builder(
           builder: (context) {
             if (postList.isEmpty) {
               return Shimmer.fromColors(
-                  child: ListView.builder(
+                  child: ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.all(AppDimens.s),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: AppDimens.s),
                     itemCount: 7,
                     itemBuilder: (context, index) => Card(
                       child: Container(
