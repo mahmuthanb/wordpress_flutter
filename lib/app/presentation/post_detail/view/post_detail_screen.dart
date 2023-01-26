@@ -10,6 +10,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/presentation/post_detail/cubit/post_detail_cubit.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
+import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/res/styles.dart';
 
 @RouteMap()
@@ -27,6 +28,8 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
     return Scaffold(
       appBar: AppBar(
         // leadingWidth: size.width * .075,
+
+        backgroundColor: AppColors.categoryBasedScaffoldColorDark,
         title: SizedBox(
           width: size.width * .95,
           height: AppBar().preferredSize.height,
