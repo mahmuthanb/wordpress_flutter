@@ -49,8 +49,8 @@ class HomePage extends BaseWidget<HomePageCubit, HomePageState> {
                   icon: const Icon(Icons.menu),
                   color: AppColors.darkerThenGrey,
                 ),
-                elevation: 0,
-                centerTitle: false,
+                // elevation: 0,
+                centerTitle: true,
               ),
               backgroundColor: AppColors.primarySwatch,
               body: Builder(
