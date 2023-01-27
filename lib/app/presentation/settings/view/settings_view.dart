@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:route_map/route_map.dart';
 import 'package:wordpress_flutter/app/presentation/settings/cubit/settings_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:wordpress_flutter/app/presentation/wellcome/view/wellcome_page.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/widget/shimmer.dart';
+import 'package:wordpress_flutter/app/router.routes.dart';
 
 @RouteMap()
 class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
@@ -15,6 +17,16 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Settings"),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  viewModel.clearCache().then((_) {
+                    const WellcomePage()
+                        .pushAndRemoveUntil(context, (p0) => false);
+                  });
+                },
+                icon: const Icon(Icons.exit_to_app))
+          ],
         ),
         body: Builder(
           builder: (context) {

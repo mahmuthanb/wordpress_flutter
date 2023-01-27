@@ -7,6 +7,8 @@ abstract class LocalDataSource {
 
   bool? get darkTheme;
   Future setDarkTheme(bool status);
+
+  Future clearStorage();
 }
 
 @Environment(Environment.prod)
@@ -29,5 +31,10 @@ class LocalDataSourceImpl implements LocalDataSource {
   @override
   Future setDarkTheme(bool status) {
     return _getStorage.write("darkTheme", status);
+  }
+
+  @override
+  Future clearStorage() {
+    return _getStorage.erase();
   }
 }
