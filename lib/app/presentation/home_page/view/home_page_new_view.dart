@@ -39,7 +39,7 @@ class HomePageNewView extends StatelessWidget {
           // elevation: 0,
           centerTitle: true,
         ),
-        backgroundColor: AppColors.primarySwatch,
+        backgroundColor: AppColors.scaffoldBackgroundColor,
         body: Builder(
           builder: (context) {
             if (postList.isEmpty) {

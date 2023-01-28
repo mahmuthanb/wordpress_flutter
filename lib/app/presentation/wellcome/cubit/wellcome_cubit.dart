@@ -19,8 +19,16 @@ class WellcomeCubit extends Cubit<WellcomeState> {
     _isValid = value;
   }
 
-  Future onSave(String? value) =>
-      localDataSource.setDomain(value!.toLowerCase());
+  Future onSave(String? value) {
+    String? trValue;
+    if (value!.endsWith("/")) {
+      trValue = value.substring(0, value.length - 1).toLowerCase();
+    } else {
+      trValue = value.toLowerCase();
+    }
+    return localDataSource.setDomain(trValue);
+  }
+
   List<Locale> get listOfLocales => AppLocalizations.supportedLocales;
   Locale get deviceLocale => Locale(Platform.localeName.split('_')[0]);
 }

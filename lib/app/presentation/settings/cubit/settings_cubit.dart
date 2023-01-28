@@ -21,8 +21,7 @@ class SettingsCubit extends Cubit<SettingsState> {
       (value) {
         locale = Platform.localeName;
         domain = localDataSource.domain;
-        theme = localDataSource.darkTheme;
-        emit(SettingsReady(value, locale!, domain, theme));
+        emit(SettingsReady(value, locale!, domain));
       },
     );
   }

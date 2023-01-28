@@ -9,6 +9,5 @@ class SettingsReady extends SettingsState {
   final PackageInfo packageInfo;
   final String? domain;
   final String? locale;
-  final bool? theme;
-  SettingsReady(this.packageInfo, this.locale, this.domain, this.theme);
+  SettingsReady(this.packageInfo, this.locale, this.domain);
 }

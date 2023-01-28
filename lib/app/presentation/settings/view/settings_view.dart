@@ -63,7 +63,7 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
                   ),
                   ListTile(
                     title: const Text("Theme"),
-                    subtitle: Text(state.theme! ? "Dark" : "Light"),
+                    subtitle: Text("Light"),
                   )
                 ],
               );
