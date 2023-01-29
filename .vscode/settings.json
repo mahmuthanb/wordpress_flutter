@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "**/*.g.dart": true,
+        "**/*.config.dart": true,
+        ".*": true,
+        "settings.json": false,
+        "**/*.iml": true,
+        "build": true,
+        "android": false,
+        "ios": false,
+    },
+    // "saveAndRun": {
+    //     "commands": [
+    //         {
+    //             "match": ".*",
+    //             "cmd": "flutter pub run import_sorter:main ${file}",
+    //             "useShortcut": false,
+    //             "silent": false
+    //         }
+    //     ]
+    // }
+}
