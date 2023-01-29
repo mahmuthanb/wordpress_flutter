@@ -6,7 +6,7 @@ import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/presentation/category/view/category_page.dart';
 import 'package:wordpress_flutter/app/presentation/settings/view/settings_view.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
-import 'package:wordpress_flutter/app/router.routes.dart';
+import 'package:wordpress_flutter/app/router/router.routes.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/res/styles.dart';
 import 'package:wordpress_flutter/core/widget/post_card.dart';

@@ -6,7 +6,7 @@ import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/presentation/post_detail/post_detail.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
-import 'package:wordpress_flutter/app/router.routes.dart';
+import 'package:wordpress_flutter/app/router/router.routes.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:wordpress_flutter/core/widget/shimmer.dart';
 

@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/view/wellcome_page.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/widget/shimmer.dart';
-import 'package:wordpress_flutter/app/router.routes.dart';
+import 'package:wordpress_flutter/app/router/router.routes.dart';
 
 @RouteMap()
 class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {

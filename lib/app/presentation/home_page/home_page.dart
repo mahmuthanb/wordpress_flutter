@@ -14,7 +14,7 @@ import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/res/styles.dart';
 import 'package:wordpress_flutter/core/widget/loading_view.dart';
 import 'package:wordpress_flutter/core/widget/post_card.dart';
-import 'package:wordpress_flutter/app/router.routes.dart';
+import 'package:wordpress_flutter/app/router/router.routes.dart';
 
 @RouteMap(name: "home")
 class HomePage extends BaseWidget<HomePageCubit, HomePageState> {

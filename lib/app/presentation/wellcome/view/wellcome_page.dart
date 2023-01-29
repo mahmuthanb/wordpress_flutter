@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:route_map/route_map.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/cubit/wellcome_cubit.dart';
-import 'package:wordpress_flutter/app/router.routes.dart';
+import 'package:wordpress_flutter/app/router/router.routes.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/res/decorations.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
