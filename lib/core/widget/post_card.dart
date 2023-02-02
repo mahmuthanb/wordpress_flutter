@@ -50,8 +50,10 @@ class PostCard extends StatelessWidget {
                         width: size.width * .9,
                         height: size.height * .125,
                         child: Center(
-                          child: Html(
-                            data: data.excerpt!.rendered,
+                          child: SingleChildScrollView(
+                            child: Html(
+                              data: data.excerpt!.rendered,
+                            ),
                           ),
                         ),
                       )
