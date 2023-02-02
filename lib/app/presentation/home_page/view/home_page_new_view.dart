@@ -82,16 +82,18 @@ class HomePageNewView extends StatelessWidget {
                             onTap: () =>
                                 CategoryPage(cat: categoriesList[index])
                                     .push(context),
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(
-                                vertical: AppDimens.xs,
-                                horizontal: AppDimens.m,
-                              ),
-                              child: Text(
-                                categoriesList[index].name!.toUpperCase(),
-                                style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.w800,
-                                  color: AppColors.darkerThenGrey,
+                            child: Center(
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(
+                                  vertical: AppDimens.xs,
+                                  horizontal: AppDimens.m,
+                                ),
+                                child: Text(
+                                  categoriesList[index].name!.toUpperCase(),
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.w800,
+                                    color: AppColors.darkerThenGrey,
+                                  ),
                                 ),
                               ),
                             ),
