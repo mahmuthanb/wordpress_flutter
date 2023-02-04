@@ -89,27 +89,60 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                               onPageFinished: (finish) {
                                 printError(info: "Page load finished");
                               },
+                              onWebResourceError: (error) {
+                                var snackBar = SnackBar(
+                                  content: Text(error.description),
+                                  duration: const Duration(
+                                    seconds: 1,
+                                  ),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              },
                             ),
                           ),
                         );
                       });
                 },
-                onImageTap: (url, context, attributes, element) {
-                  printInfo(info: "Resim tıklandı");
-                  // Get.to(() => ImageView(url: url!));
+
+                customRenders: {
+                  // (context) {
+                  //   if (context.key!.id == "img") {
+                  //     return true;
+                  //   }
+                  //   return false;
+                  // }: (Widget child) {
+                  //   return Text("asd");
+                  // },
+                  assetUriMatcher(): assetImageRender()
+                  // "flutter": (RenderContext context, Widget child) {
+                  //   return FlutterLogo(
+                  //     style: (context.tree.element!.attributes['horizontal'] !=
+                  //             null)
+                  //         ? FlutterLogoStyle.horizontal
+                  //         : FlutterLogoStyle.markOnly,
+                  //     textColor: context.style.color!,
+                  //     size: context.style.fontSize!.size! * 5,
+                  //   );
+                  // },
                 },
-                onImageError: (exception, stackTrace) {
-                  exception.printInfo();
-                  const snackBar = SnackBar(
-                    content: Text('Error while loading an image!'),
-                    duration: Duration(
-                      seconds: 1,
-                    ),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                },
+                tagsList: Html.tags..addAll(["bird", "flutter"]),
+                // onImageTap: (url, context, attributes, element) {
+                //   printInfo(info: "Resim tıklandı");
+                //   // Get.to(() => ImageView(url: url!));
+                // },
+                // onImageError: (exception, stackTrace) {
+                //   // exception.printInfo();
+                //   const snackBar = SnackBar(
+                //     content: Text('Error while loading an image!'),
+                //     duration: Duration(
+                //       seconds: 1,
+                //     ),
+                //   );
+                //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                // },
                 data: post.content!.rendered,
-                // style: AppWebviewStyle.htmlStyle,
+                style: AppWebviewStyle.htmlStyle,
               ),
             ),
           )
