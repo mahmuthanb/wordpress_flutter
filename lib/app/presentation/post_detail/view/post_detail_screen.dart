@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -6,6 +7,7 @@ import 'package:html_unescape/html_unescape.dart';
 import 'package:marquee/marquee.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:route_map/route_map.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/presentation/post_detail/cubit/post_detail_cubit.dart';
@@ -114,7 +116,15 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                   // }: (Widget child) {
                   //   return Text("asd");
                   // },
-                  assetUriMatcher(): assetImageRender()
+                  networkSourceMatcher(): networkImageRender(
+                    loadingWidget: () => Shimmer.fromColors(
+                      child: CircularProgressIndicator(),
+                      baseColor: AppColors.shimmerBase,
+                      highlightColor: AppColors.shimmerHighlighted,
+                    ),
+                    altWidget: (imageUrl) =>
+                        CachedNetworkImage(imageUrl: imageUrl!),
+                  )
                   // "flutter": (RenderContext context, Widget child) {
                   //   return FlutterLogo(
                   //     style: (context.tree.element!.attributes['horizontal'] !=
