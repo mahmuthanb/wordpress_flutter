@@ -126,7 +126,7 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                   //   );
                   // },
                 },
-                tagsList: Html.tags..addAll(["bird", "flutter"]),
+                tagsList: Html.tags..addAll(["img"]),
                 // onImageTap: (url, context, attributes, element) {
                 //   printInfo(info: "Resim tıklandı");
                 //   // Get.to(() => ImageView(url: url!));
