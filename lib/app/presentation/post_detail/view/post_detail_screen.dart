@@ -13,6 +13,7 @@ import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/presentation/post_detail/cubit/post_detail_cubit.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
+import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/res/styles.dart';
 
 @RouteMap()
@@ -106,24 +107,35 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                         );
                       });
                 },
-
                 customRenders: {
-                  // (context) {
-                  //   if (context.key!.id == "img") {
-                  //     return true;
-                  //   }
-                  //   return false;
-                  // }: (Widget child) {
-                  //   return Text("asd");
-                  // },
                   networkSourceMatcher(): networkImageRender(
                     loadingWidget: () => Shimmer.fromColors(
-                      child: CircularProgressIndicator(),
+                      child: const CircularProgressIndicator(),
                       baseColor: AppColors.shimmerBase,
                       highlightColor: AppColors.shimmerHighlighted,
                     ),
-                    altWidget: (imageUrl) =>
-                        CachedNetworkImage(imageUrl: imageUrl!),
+                    altWidget: (imageUrl) => Container(
+                      decoration: const BoxDecoration(
+                          color: AppColors.shimmerHighlighted,
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(AppDimens.m))),
+                      padding:
+                          const EdgeInsets.symmetric(vertical: AppDimens.m),
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.broken_image,
+                              color: AppColors.red,
+                              size: size.width * .2,
+                            ),
+                            Text('Image can\'t be shown: \$$imageUrl  ')
+                          ],
+                        ),
+                      ),
+                    ),
+                    height: size.width * .2,
+                    width: size.width * .2,
                   )
                   // "flutter": (RenderContext context, Widget child) {
                   //   return FlutterLogo(
