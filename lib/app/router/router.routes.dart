@@ -5,6 +5,7 @@
 // **************************************************************************
 
 import 'package:flutter/material.dart';
+import 'package:wordpress_flutter/core/widget/image_view.dart';
 import 'package:wordpress_flutter/app/presentation/settings/view/settings_view.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
 import 'package:wordpress_flutter/app/presentation/category/view/category_page.dart';
@@ -12,6 +13,7 @@ import 'package:wordpress_flutter/app/presentation/post_detail/view/post_detail_
 import 'package:wordpress_flutter/app/presentation/wellcome/view/wellcome_page.dart';
 
 class RouteMaps {
+  static String imageView = "/image_view";
   static String settingsPage = "/settings_page";
   static String home = "home";
   static String category = "category";
@@ -20,6 +22,11 @@ class RouteMaps {
 }
 
 final Map<String, RouteModel> _routes = {
+  RouteMaps.imageView: RouteModel(
+    (c) => ImageView(
+      url: c.routeArgs()?["url"],
+    ),
+  ),
   RouteMaps.settingsPage: RouteModel(
     (_) => const SettingsPage(),
   ),
@@ -68,6 +75,88 @@ class RouteModel {
     this.builder, {
     this.fullscreenDialog = false,
   });
+}
+
+extension ImageViewExtension on ImageView {
+  Object get _args => {
+        "url": url,
+      };
+  Future<T?> push<T extends Object?>(
+    BuildContext context, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator).pushNamed(
+        RouteMaps.imageView,
+        arguments: _args,
+      );
+  Future<T?> pushReplacement<T extends Object?, TO extends Object?>(
+    BuildContext context, {
+    bool rootNavigator = false,
+    TO? result,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator).pushReplacementNamed(
+        RouteMaps.imageView,
+        result: result,
+        arguments: _args,
+      );
+  Future<T?> popAndPush<T extends Object?, TO extends Object?>(
+    BuildContext context, {
+    bool rootNavigator = false,
+    TO? result,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator).popAndPushNamed(
+        RouteMaps.imageView,
+        result: result,
+        arguments: _args,
+      );
+  Future<T?> pushAndRemoveUntil<T extends Object?>(
+    BuildContext context,
+    bool Function(Route<dynamic>) predicate, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator)
+          .pushNamedAndRemoveUntil(
+        RouteMaps.imageView,
+        predicate,
+        arguments: _args,
+      );
+  String restorablePush(
+    BuildContext context, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator).restorablePushNamed(
+        RouteMaps.imageView,
+        arguments: _args,
+      );
+  String restorablePushAndRemoveUntil<T extends Object?>(
+    BuildContext context,
+    bool Function(Route<dynamic>) predicate, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator)
+          .restorablePushNamedAndRemoveUntil(
+        RouteMaps.imageView,
+        predicate,
+        arguments: _args,
+      );
+  String restorablePopAndPush(
+    BuildContext context, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator)
+          .restorablePopAndPushNamed(
+        RouteMaps.imageView,
+        arguments: _args,
+      );
+  String restorablePushReplacement(
+    BuildContext context, {
+    bool rootNavigator = false,
+  }) =>
+      Navigator.of(context, rootNavigator: rootNavigator)
+          .restorablePushReplacementNamed(
+        RouteMaps.imageView,
+        arguments: _args,
+      );
 }
 
 extension SettingsPageExtension on SettingsPage {

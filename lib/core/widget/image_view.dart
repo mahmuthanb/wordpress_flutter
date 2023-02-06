@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:route_map/route_map.dart';
 
+@RouteMap()
 class ImageView extends StatelessWidget {
   const ImageView({
     Key? key,

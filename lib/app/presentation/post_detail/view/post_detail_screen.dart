@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -15,6 +14,8 @@ import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/res/styles.dart';
+import 'package:wordpress_flutter/app/router/router.routes.dart';
+import 'package:wordpress_flutter/core/widget/image_view.dart';
 
 @RouteMap()
 class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
@@ -137,32 +138,22 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                     height: size.width * .2,
                     width: size.width * .2,
                   )
-                  // "flutter": (RenderContext context, Widget child) {
-                  //   return FlutterLogo(
-                  //     style: (context.tree.element!.attributes['horizontal'] !=
-                  //             null)
-                  //         ? FlutterLogoStyle.horizontal
-                  //         : FlutterLogoStyle.markOnly,
-                  //     textColor: context.style.color!,
-                  //     size: context.style.fontSize!.size! * 5,
-                  //   );
-                  // },
                 },
                 tagsList: Html.tags..addAll(["img"]),
-                // onImageTap: (url, context, attributes, element) {
-                //   printInfo(info: "Resim tıklandı");
-                //   // Get.to(() => ImageView(url: url!));
-                // },
-                // onImageError: (exception, stackTrace) {
-                //   // exception.printInfo();
-                //   const snackBar = SnackBar(
-                //     content: Text('Error while loading an image!'),
-                //     duration: Duration(
-                //       seconds: 1,
-                //     ),
-                //   );
-                //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                // },
+                onImageTap: (url, ctx, attributes, element) {
+                  printInfo(info: "Resim tıklandı");
+                  ImageView(url: url!).push(context);
+                },
+                onImageError: (exception, stackTrace) {
+                  // exception.printInfo();
+                  const snackBar = SnackBar(
+                    content: Text('Error while loading an image!'),
+                    duration: Duration(
+                      seconds: 1,
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
                 data: post.content!.rendered,
                 style: AppWebviewStyle.htmlStyle,
               ),
