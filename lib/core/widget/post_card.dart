@@ -64,9 +64,6 @@ class PostCard extends StatelessWidget {
               margin: const EdgeInsets.only(top: AppDimens.m),
               child: Row(
                 children: [
-                  const Icon(Icons.favorite_outline),
-                  const SizedBox(width: AppDimens.m),
-                  const Icon(Icons.volume_up),
                   const Spacer(),
                   const Icon(Icons.schedule),
                   const SizedBox(width: AppDimens.xs),
