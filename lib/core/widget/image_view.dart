@@ -15,7 +15,7 @@ class ImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => Get.back(),
+      onTap: () => Navigator.pop(context),
       child: SizedBox(
         width: size.width,
         height: size.height,
