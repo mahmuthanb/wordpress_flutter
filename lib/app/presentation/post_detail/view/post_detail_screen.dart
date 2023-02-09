@@ -30,10 +30,10 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
     String title = HtmlUnescape().convert(post.title!.rendered.toString());
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         // leadingWidth: size.width * .075,
-
-        backgroundColor: AppColors.categoryBasedScaffoldColorDark,
+        // backgroundColor: AppColors.black,
         title: SizedBox(
           width: size.width * .95,
           height: AppBar().preferredSize.height,
@@ -63,6 +63,7 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
       ),
       body: Column(
         children: [
+          const Divider(height: AppDimens.xs, thickness: 2),
           Expanded(
             child: SingleChildScrollView(
               child: Html(
