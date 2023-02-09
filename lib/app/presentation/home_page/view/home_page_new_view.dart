@@ -4,7 +4,9 @@ import 'package:shimmer/shimmer.dart';
 import 'package:wordpress_flutter/app/data/model/category/category_model.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/presentation/category/view/category_page.dart';
+import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart';
 import 'package:wordpress_flutter/app/presentation/settings/view/settings_view.dart';
+import 'package:wordpress_flutter/app/presentation/wellcome/wellcome.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/app/router/router.routes.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
@@ -13,22 +15,21 @@ import 'package:wordpress_flutter/core/widget/post_card.dart';
 
 class HomePageNewView extends StatelessWidget {
   const HomePageNewView(
-    this.postList,
-    this.categoriesList,
-    this.headerText, {
+    this.viewModel, {
     super.key,
   });
 
-  final List<PostModel> postList;
-  final List<CategoryModel> categoriesList;
-  final String headerText;
+  // final List<PostModel> postList;
+  // final List<CategoryModel> categoriesList;
+  // final String headerText;
+  final HomePageCubit viewModel;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            headerText,
+            viewModel.headerText,
             style: AppTextStyle.headerTextStyle,
           ),
           leading: IconButton(
@@ -36,13 +37,22 @@ class HomePageNewView extends StatelessWidget {
             icon: const Icon(Icons.menu),
             color: AppColors.darkerThenGrey,
           ),
+          actions: [
+            IconButton(
+              onPressed: () => viewModel.logout().then((value) =>
+                  const WellcomePage()
+                      .pushAndRemoveUntil(context, (p0) => false)),
+              icon: const Icon(Icons.cancel),
+              color: AppColors.darkerThenGrey,
+            ),
+          ],
           // elevation: 0,
           centerTitle: true,
         ),
         backgroundColor: AppColors.scaffoldBackgroundColor,
         body: Builder(
           builder: (context) {
-            if (postList.isEmpty) {
+            if (viewModel.postList.isEmpty) {
               return Shimmer.fromColors(
                   child: ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
@@ -73,15 +83,15 @@ class HomePageNewView extends StatelessWidget {
                         ),
                       ),
                       child: ListView.separated(
-                        itemCount: categoriesList.length,
+                        itemCount: viewModel.categoriesList.length,
                         scrollDirection: Axis.horizontal,
                         separatorBuilder: (context, index) =>
                             const SizedBox(width: AppDimens.xxs),
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                            onTap: () =>
-                                CategoryPage(cat: categoriesList[index])
-                                    .push(context),
+                            onTap: () => CategoryPage(
+                                    cat: viewModel.categoriesList[index])
+                                .push(context),
                             child: Center(
                               child: Container(
                                 margin: const EdgeInsets.symmetric(
@@ -89,7 +99,8 @@ class HomePageNewView extends StatelessWidget {
                                   horizontal: AppDimens.m,
                                 ),
                                 child: Text(
-                                  categoriesList[index].name!.toUpperCase(),
+                                  viewModel.categoriesList[index].name!
+                                      .toUpperCase(),
                                   style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.w800,
                                     color: AppColors.darkerThenGrey,
@@ -105,14 +116,14 @@ class HomePageNewView extends StatelessWidget {
                   Expanded(
                     flex: 20,
                     child: ListView.separated(
-                      itemCount: postList.length,
+                      itemCount: viewModel.postList.length,
                       separatorBuilder: (context, index) => const Divider(
                         height: AppDimens.xxs,
                         color: AppColors.darkGrey,
                         thickness: .5,
                       ),
                       itemBuilder: (context, index) {
-                        PostModel data = postList[index];
+                        PostModel data = viewModel.postList[index];
                         return PostCard(data);
                       },
                     ),
