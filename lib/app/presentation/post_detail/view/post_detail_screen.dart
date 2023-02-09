@@ -69,8 +69,10 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                 onLinkTap: (String? url, RenderContext ctx,
                     Map<String, String> attributes, _) {
                   // var pageLoading = true.obs;
-                  final urlWithoutWWW = url!.replaceAll(RegExp('www.'), '');
-                  showMaterialModalBottomSheet(
+                  if (url!.contains('www.mahmuthan.com/wp-content/uploads/') ==
+                      false) {
+                    final urlWithoutWWW = url.replaceAll(RegExp('www.'), '');
+                    showMaterialModalBottomSheet(
                       context: context,
                       enableDrag: false,
                       builder: (builder) {
@@ -106,7 +108,9 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                             ),
                           ),
                         );
-                      });
+                      },
+                    );
+                  }
                 },
                 customRenders: {
                   networkSourceMatcher(): networkImageRender(
