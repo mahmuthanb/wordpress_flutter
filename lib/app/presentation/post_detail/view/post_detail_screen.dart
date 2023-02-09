@@ -68,7 +68,6 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
               child: Html(
                 onLinkTap: (String? url, RenderContext ctx,
                     Map<String, String> attributes, _) {
-                  // var pageLoading = true.obs;
                   if (url!.contains('www.mahmuthan.com/wp-content/uploads/') ==
                       false) {
                     final urlWithoutWWW = url.replaceAll(RegExp('www.'), '');
