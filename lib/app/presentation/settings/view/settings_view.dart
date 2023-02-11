@@ -4,6 +4,8 @@ import 'package:wordpress_flutter/app/presentation/settings/cubit/settings_cubit
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/view/wellcome_page.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
+import 'package:wordpress_flutter/core/res/colors.dart';
+import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/widget/shimmer.dart';
 import 'package:wordpress_flutter/app/router/router.routes.dart';
 
@@ -17,6 +19,7 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
     return Scaffold(
         appBar: AppBar(
           title: Text(AppLocalizations.of(context).titleSettings),
+          elevation: 5,
           actions: [
             IconButton(
                 onPressed: () {
@@ -28,11 +31,13 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
                 icon: const Icon(Icons.exit_to_app))
           ],
         ),
+        backgroundColor: AppColors.white,
         body: Builder(
           builder: (context) {
             if (state is SettingsReady) {
               return ListView(
                 children: [
+                  // const Divider(height: AppDimens.s, thickness: 3),
                   ListTile(
                     title: Text(AppLocalizations.of(context).titleDomain),
                     subtitle: Text(state.domain!),
