@@ -4,5 +4,12 @@
   "logoutText":"Are you sure want to clear data and exit?",
   "btnOkay":"OKAY",
   "btnCancel":"Cancel",
-  "titleSettings":"Settings"
+  "titleSettings":"Settings",
+  "titleDomain":"Domain",
+  "titleAppName":"Application name",
+  "titlePackageName":"Package name",
+  "titleVersion":"Version",
+  "titleBuildNumber":"Build number",
+  "titleLocale":"Locale",
+  "titleTheme":"Theme"
 }

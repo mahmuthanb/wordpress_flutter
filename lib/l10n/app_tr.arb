@@ -4,5 +4,12 @@
   "logoutText":"Kayıtlı verileri silip çıkış yapmak istediğine emin misin?",
   "btnOkay":"TAMAM",
   "btnCancel":"Geri",
-  "titleSettings":"Ayarlar"
+  "titleSettings":"Ayarlar",
+  "titleDomain":"Alan adı",
+  "titleAppName":"Uygulama adı",
+  "titlePackageName":"Paket adı",
+  "titleVersion":"Versiyon",
+  "titleBuildNumber":"Build numarası",
+  "titleLocale":"Yerel Dil",
+  "titleTheme":"Tema"
 }

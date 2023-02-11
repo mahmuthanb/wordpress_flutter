@@ -34,27 +34,27 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
               return ListView(
                 children: [
                   ListTile(
-                    title: const Text("Domain"),
+                    title: Text(AppLocalizations.of(context).titleDomain),
                     subtitle: Text(state.domain!),
                   ),
                   ListTile(
-                    title: const Text("App Name"),
+                    title: Text(AppLocalizations.of(context).titleAppName),
                     subtitle: Text(state.packageInfo.appName),
                   ),
                   ListTile(
-                    title: const Text("Package Name"),
+                    title: Text(AppLocalizations.of(context).titlePackageName),
                     subtitle: Text(state.packageInfo.packageName),
                   ),
                   ListTile(
-                    title: const Text("Version Number"),
+                    title: Text(AppLocalizations.of(context).titleVersion),
                     subtitle: Text(state.packageInfo.version),
                   ),
                   ListTile(
-                    title: const Text("Build Number"),
+                    title: Text(AppLocalizations.of(context).titleBuildNumber),
                     subtitle: Text(state.packageInfo.buildNumber),
                   ),
                   ListTile(
-                    title: const Text("Locale"),
+                    title: Text(AppLocalizations.of(context).titleLocale),
                     subtitle: Text(state.locale!),
                   ),
                   ListTile(
@@ -62,8 +62,8 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
                     subtitle: Text(AppLocalizations.of(context).appTitle),
                   ),
                   ListTile(
-                    title: const Text("Theme"),
-                    subtitle: Text("Light"),
+                    title: Text(AppLocalizations.of(context).titleTheme),
+                    subtitle: const Text("Light"),
                   )
                 ],
               );
