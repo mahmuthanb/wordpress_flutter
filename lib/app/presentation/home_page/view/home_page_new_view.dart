@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:wordpress_flutter/app/data/model/category/category_model.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
 import 'package:wordpress_flutter/app/presentation/category/view/category_page.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart';
@@ -11,7 +10,9 @@ import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/app/router/router.routes.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/res/styles.dart';
+import 'package:wordpress_flutter/core/widget/app_dialog.dart';
 import 'package:wordpress_flutter/core/widget/post_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePageNewView extends StatelessWidget {
   const HomePageNewView(
@@ -39,12 +40,40 @@ class HomePageNewView extends StatelessWidget {
           ),
           actions: [
             IconButton(
-              onPressed: () => viewModel.logout().then((value) =>
-                  const WellcomePage()
-                      .pushAndRemoveUntil(context, (p0) => false)),
-              icon: const Icon(Icons.cancel),
-              color: AppColors.darkerThenGrey,
-            ),
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (c) {
+                        return AppDialog(
+                          icon: const Icon(Icons.warning,
+                              size: 48, color: Colors.red),
+                          title: Text(AppLocalizations.of(context).logoutText),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                viewModel.logout().then((value) =>
+                                    const WellcomePage().pushAndRemoveUntil(
+                                        context, (p0) => false));
+                              },
+                              child: Text(
+                                AppLocalizations.of(context).btnOkay,
+                                style: const TextStyle(color: AppColors.red),
+                              ),
+                            ),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop();
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context).btnCancel,
+                                  style: const TextStyle(color: Colors.grey),
+                                ))
+                          ],
+                        );
+                      });
+                },
+                icon: const Icon(Icons.exit_to_app)),
           ],
           // elevation: 0,
           centerTitle: true,
