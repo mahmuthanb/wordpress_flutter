@@ -1,4 +1,8 @@
 {
   "appTitle": "WordPress Flutter EN",
-  "languageTag":"English"
+  "languageTag":"English",
+  "logoutText":"Are you sure want to clear data and exit?",
+  "btnOkay":"OKAY",
+  "btnCancel":"Cancel",
+  "titleSettings":"Settings"
 }

@@ -16,7 +16,7 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
       BuildContext context, SettingsCubit viewModel, SettingsState state) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Settings"),
+          title: Text(AppLocalizations.of(context).titleSettings),
           actions: [
             IconButton(
                 onPressed: () {
