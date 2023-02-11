@@ -26,7 +26,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
-  Future clearCache() async {
+  Future logout() async {
     await localDataSource.clearStorage();
   }
 }

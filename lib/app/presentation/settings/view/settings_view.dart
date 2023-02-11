@@ -6,6 +6,7 @@ import 'package:wordpress_flutter/app/presentation/wellcome/view/wellcome_page.d
 import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
+import 'package:wordpress_flutter/core/widget/app_dialog.dart';
 import 'package:wordpress_flutter/core/widget/shimmer.dart';
 import 'package:wordpress_flutter/app/router/router.routes.dart';
 
@@ -23,10 +24,37 @@ class SettingsPage extends BaseWidget<SettingsCubit, SettingsState> {
           actions: [
             IconButton(
                 onPressed: () {
-                  viewModel.clearCache().then((_) {
-                    const WellcomePage()
-                        .pushAndRemoveUntil(context, (p0) => false);
-                  });
+                  showDialog(
+                      context: context,
+                      builder: (c) {
+                        return AppDialog(
+                          icon: const Icon(Icons.warning,
+                              size: 48, color: Colors.red),
+                          title: Text(AppLocalizations.of(context).logoutText),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                viewModel.logout().then((value) =>
+                                    const WellcomePage().pushAndRemoveUntil(
+                                        context, (p0) => false));
+                              },
+                              child: Text(
+                                AppLocalizations.of(context).btnOkay,
+                                style: const TextStyle(color: AppColors.red),
+                              ),
+                            ),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop();
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context).btnCancel,
+                                  style: const TextStyle(color: Colors.grey),
+                                ))
+                          ],
+                        );
+                      });
                 },
                 icon: const Icon(Icons.exit_to_app))
           ],
