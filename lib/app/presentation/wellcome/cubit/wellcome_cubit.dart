@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:wordpress_flutter/app/data/model/language/language_model.dart';
 import 'package:wordpress_flutter/core/base/base_view_model.dart';
 import 'package:wordpress_flutter/core/source/local_data_source.dart';
 
@@ -31,4 +32,11 @@ class WellcomeCubit extends Cubit<WellcomeState> {
 
   List<Locale> get listOfLocales => AppLocalizations.supportedLocales;
   Locale get deviceLocale => Locale(Platform.localeName.split('_')[0]);
+  List<Language> get languageList => _languageList;
+  Language get first => languageList.first;
+
+  final List<Language> _languageList = [
+    Language(1, "Türkçe", "🇹🇷", "tr"),
+    Language(2, "English", "🇺🇸", "en"),
+  ];
 }

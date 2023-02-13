@@ -77,19 +77,16 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                 const SizedBox(height: AppDimens.l),
                 DropdownButtonFormField<Language>(
                   decoration: AppDecorations.languageSelectorInputDecoration,
-                  value: Language(1, "Türkçe", "🇹🇷", "tr"),
-                  items: [
-                    Language(1, "Türkçe", "🇹🇷", "tr"),
-                    Language(2, "English", "🇺🇸", "en"),
-                  ]
+                  value: viewModel.languageList.first,
+                  items: viewModel.languageList
                       .map(
                         (Language e) => DropdownMenuItem<Language>(
                           value: e,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(e.flag),
-                              Text(e.languageCode),
+                              Text(e.name),
                             ],
                           ),
                         ),
