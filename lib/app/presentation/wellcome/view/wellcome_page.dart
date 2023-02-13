@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:route_map/route_map.dart';
+import 'package:wordpress_flutter/app/data/model/language/language_model.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/cubit/wellcome_cubit.dart';
 import 'package:wordpress_flutter/app/router/router.routes.dart';
@@ -8,6 +9,7 @@ import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/res/decorations.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/util/validator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @RouteMap(name: "/")
 class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
@@ -53,8 +55,9 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                   padding: const EdgeInsets.symmetric(
                     vertical: AppDimens.m,
                   ),
-                  child: const Text(
-                      "Browse the best news on latest strategies, trends various tools and news in the world"),
+                  child: Text(
+                    AppLocalizations.of(context).wellcomeSubtitle,
+                  ),
                 ),
                 const Spacer(flex: 1),
                 Form(
@@ -72,14 +75,23 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                   ),
                 ),
                 const SizedBox(height: AppDimens.l),
-                DropdownButtonFormField<Locale>(
+                DropdownButtonFormField<Language>(
                   decoration: AppDecorations.languageSelectorInputDecoration,
-                  value: viewModel.deviceLocale,
-                  items: viewModel.listOfLocales
+                  value: Language(1, "Türkçe", "🇹🇷", "tr"),
+                  items: [
+                    Language(1, "Türkçe", "🇹🇷", "tr"),
+                    Language(2, "English", "🇺🇸", "en"),
+                  ]
                       .map(
-                        (Locale e) => DropdownMenuItem<Locale>(
+                        (Language e) => DropdownMenuItem<Language>(
                           value: e,
-                          child: Text(e.languageCode),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(e.flag),
+                              Text(e.languageCode),
+                            ],
+                          ),
                         ),
                       )
                       .toList(),

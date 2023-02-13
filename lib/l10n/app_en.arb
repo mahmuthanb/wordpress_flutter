@@ -11,5 +11,7 @@
   "titleVersion":"Version",
   "titleBuildNumber":"Build number",
   "titleLocale":"Locale",
-  "titleTheme":"Theme"
+  "titleTheme":"Theme",
+  "wellcomeTitle":"Latest article with better news",
+  "wellcomeSubtitle":"Browse the best news on latest strategies, trends various tools and news in the world"
 }

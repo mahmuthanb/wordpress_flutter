@@ -11,5 +11,7 @@
   "titleVersion":"Versiyon",
   "titleBuildNumber":"Build numarası",
   "titleLocale":"Yerel Dil",
-  "titleTheme":"Tema"
+  "titleTheme":"Tema",
+  "wellcomeTitle":" Güzel haberlerle en son makaleler",
+  "wellcomeSubtitle":"Dünyadaki en son stratejiler, trendler, çeşitli araçlar ve haberler hakkında en iyi haberlere göz atın"
 }
