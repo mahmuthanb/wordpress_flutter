@@ -67,11 +67,10 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
           Expanded(
             child: SingleChildScrollView(
               child: Html(
-                onLinkTap: (String? url, RenderContext ctx,
-                    Map<String, String> attributes, _) {
+                onLinkTap: (String? url, RenderContext ctx, __, _) {
                   if (url!.contains('www.mahmuthan.com/wp-content/uploads/') ==
                       false) {
-                    final urlWithoutWWW = url.replaceAll(RegExp('www.'), '');
+                    // final urlWithoutWWW = url.replaceAll(RegExp('www.'), '');
                     showMaterialModalBottomSheet(
                       context: context,
                       enableDrag: false,
@@ -82,8 +81,8 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                             height: size.height * .75,
                             width: size.width,
                             child: WebView(
-                              key: Key(urlWithoutWWW),
-                              initialUrl: urlWithoutWWW,
+                              key: Key(url),
+                              initialUrl: url,
                               javascriptMode: JavascriptMode.unrestricted,
                               onPageStarted: (urlWithoutWWW) {
                                 // pageLoading(true);
@@ -159,7 +158,7 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 data: post.content!.rendered,
-                style: AppWebviewStyle.htmlStyle,
+                // style: AppWebviewStyle.htmlStyle,
               ),
             ),
           )
