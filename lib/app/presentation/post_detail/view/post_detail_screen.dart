@@ -70,7 +70,7 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                 onLinkTap: (String? url, RenderContext ctx, __, _) {
                   if (url!.contains('www.mahmuthan.com/wp-content/uploads/') ==
                       false) {
-                    // final urlWithoutWWW = url.replaceAll(RegExp('www.'), '');
+                    final urlWithoutWWW = url.replaceAll(RegExp('www.'), '');
                     showMaterialModalBottomSheet(
                       context: context,
                       enableDrag: false,
@@ -81,8 +81,8 @@ class PostDetailPage extends BaseWidget<PostDetailCubit, PostDetailState> {
                             height: size.height * .75,
                             width: size.width,
                             child: WebView(
-                              key: Key(url),
-                              initialUrl: url,
+                              key: Key(urlWithoutWWW),
+                              initialUrl: urlWithoutWWW,
                               javascriptMode: JavascriptMode.unrestricted,
                               onPageStarted: (urlWithoutWWW) {
                                 // pageLoading(true);
