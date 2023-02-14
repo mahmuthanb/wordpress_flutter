@@ -44,7 +44,7 @@ class HomePageCubit extends Cubit<HomePageState> {
   }
 
   List<String> get domain => localDataSource.domain!.split('.');
-  // TODO You can change your app title from here
+  // TO DO You can change your app title from here
   String get headerText => (domain[1] + domain[2]).toUpperCase();
 
   Future logout() {

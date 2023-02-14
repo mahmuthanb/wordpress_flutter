@@ -13,26 +13,28 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:wordpress_flutter/app/data/repository/common_repository.dart'
     as _i5;
 import 'package:wordpress_flutter/app/data/repository/posts_repository.dart'
-    as _i11;
+    as _i12;
 import 'package:wordpress_flutter/app/data/service/api_service/api_service.dart'
     as _i3;
 import 'package:wordpress_flutter/app/presentation/app/cubit/test_cubit.dart'
-    as _i13;
-import 'package:wordpress_flutter/app/presentation/category/cubit/category_cubit.dart'
-    as _i15;
-import 'package:wordpress_flutter/app/presentation/connectivity/cubit/internet_cubit.dart'
-    as _i17;
-import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart'
-    as _i16;
-import 'package:wordpress_flutter/app/presentation/post_detail/cubit/post_detail_cubit.dart'
-    as _i10;
-import 'package:wordpress_flutter/app/presentation/settings/cubit/settings_cubit.dart'
-    as _i12;
-import 'package:wordpress_flutter/app/presentation/wellcome/cubit/wellcome_cubit.dart'
     as _i14;
-import 'package:wordpress_flutter/core/config.dart' as _i4;
-import 'package:wordpress_flutter/core/di/app_module.dart' as _i18;
+import 'package:wordpress_flutter/app/presentation/category/cubit/category_cubit.dart'
+    as _i16;
+import 'package:wordpress_flutter/app/presentation/connectivity/cubit/internet_cubit.dart'
+    as _i19;
+import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart'
+    as _i18;
+import 'package:wordpress_flutter/app/presentation/post_detail/cubit/post_detail_cubit.dart'
+    as _i11;
+import 'package:wordpress_flutter/app/presentation/settings/cubit/settings_cubit.dart'
+    as _i13;
+import 'package:wordpress_flutter/app/presentation/wellcome/cubit/wellcome_cubit.dart'
+    as _i15;
+import 'package:wordpress_flutter/core/config/config.dart' as _i4;
+import 'package:wordpress_flutter/core/config/cubit/config_cubit.dart' as _i17;
+import 'package:wordpress_flutter/core/di/app_module.dart' as _i20;
 import 'package:wordpress_flutter/core/source/local_data_source.dart' as _i9;
+import 'package:wordpress_flutter/l10n/cubit/localization_cubit.dart' as _i10;
 
 const String _dev = 'dev';
 const String _prod = 'prod';
@@ -76,14 +78,15 @@ extension GetItInjectableX on _i1.GetIt {
         _dev,
       },
     );
-    gh.factory<_i10.PostDetailCubit>(() => _i10.PostDetailCubit());
-    gh.lazySingleton<_i11.PostsRepository>(
-        () => _i11.PostsRepositoryImpl(gh<_i3.ApiService>()));
-    gh.factory<_i12.SettingsCubit>(
-        () => _i12.SettingsCubit(gh<_i9.LocalDataSource>()));
-    gh.factory<_i13.TestCubit>(() => _i13.TestCubit());
-    gh.factory<_i14.WellcomeCubit>(
-        () => _i14.WellcomeCubit(gh<_i9.LocalDataSource>()));
+    gh.factory<_i10.LocalizationCubit>(() => _i10.LocalizationCubit());
+    gh.factory<_i11.PostDetailCubit>(() => _i11.PostDetailCubit());
+    gh.lazySingleton<_i12.PostsRepository>(
+        () => _i12.PostsRepositoryImpl(gh<_i3.ApiService>()));
+    gh.factory<_i13.SettingsCubit>(
+        () => _i13.SettingsCubit(gh<_i9.LocalDataSource>()));
+    gh.factory<_i14.TestCubit>(() => _i14.TestCubit());
+    gh.factory<_i15.WellcomeCubit>(
+        () => _i15.WellcomeCubit(gh<_i9.LocalDataSource>()));
     gh.lazySingleton<_i4.AppConfig>(
       () => _i4.ProdAppConfigImpl(gh<_i9.LocalDataSource>()),
       registerFor: {
@@ -91,15 +94,17 @@ extension GetItInjectableX on _i1.GetIt {
         _dev,
       },
     );
-    gh.factory<_i15.CategoryCubit>(() => _i15.CategoryCubit(
+    gh.factory<_i16.CategoryCubit>(() => _i16.CategoryCubit(
           gh<_i5.CommonRepository>(),
           gh<_i9.LocalDataSource>(),
         ));
-    gh.factory<_i16.HomePageCubit>(() => _i16.HomePageCubit(
+    gh.factory<_i17.ConfigCubit>(
+        () => _i17.ConfigCubit(localDataSource: gh<_i9.LocalDataSource>()));
+    gh.factory<_i18.HomePageCubit>(() => _i18.HomePageCubit(
           gh<_i5.CommonRepository>(),
           gh<_i9.LocalDataSource>(),
         ));
-    gh.factory<_i17.InternetCubit>(() => _i17.InternetCubit(
+    gh.factory<_i19.InternetCubit>(() => _i19.InternetCubit(
           connectivity: gh<_i6.Connectivity>(),
           localDataSource: gh<_i9.LocalDataSource>(),
         ));
@@ -107,4 +112,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$AppModule extends _i18.AppModule {}
+class _$AppModule extends _i20.AppModule {}

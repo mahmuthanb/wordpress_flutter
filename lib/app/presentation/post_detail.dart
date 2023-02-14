@@ -8,7 +8,6 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:get/get.dart';
 import 'package:wordpress_flutter/app/data/model/post/post_model.dart';
-import 'package:wordpress_flutter/core/res/styles.dart';
 import 'package:wordpress_flutter/core/widget/image_view.dart';
 
 class PostDetailPage extends StatefulWidget {

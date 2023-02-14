@@ -5,7 +5,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/view/wellcome_page.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
-import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/widget/app_dialog.dart';
 import 'package:wordpress_flutter/core/widget/shimmer.dart';
 import 'package:wordpress_flutter/app/router/router.routes.dart';

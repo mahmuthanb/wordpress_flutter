@@ -13,7 +13,6 @@ import 'package:wordpress_flutter/app/presentation/post_detail/cubit/post_detail
 import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/res/colors.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
-import 'package:wordpress_flutter/core/res/styles.dart';
 import 'package:wordpress_flutter/app/router/router.routes.dart';
 import 'package:wordpress_flutter/core/widget/image_view.dart';
 

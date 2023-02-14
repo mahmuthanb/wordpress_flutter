@@ -35,7 +35,7 @@ class InfoMessage {
                       DefaultTextStyle(
                         style: Theme.of(context)
                             .textTheme
-                            .subtitle2!
+                            .titleSmall!
                             .copyWith(color: Colors.white),
                         child: Text(
                           title!,
@@ -45,7 +45,7 @@ class InfoMessage {
                       DefaultTextStyle(
                         style: Theme.of(context)
                             .textTheme
-                            .bodyText2!
+                            .bodyMedium!
                             .copyWith(color: Colors.white),
                         child: Text(
                           message.toString().trim(),

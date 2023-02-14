@@ -13,7 +13,6 @@ class AppTheme {
           primarySwatch: AppColors.primarySwatch,
           accentColor: AppColors.primarySwatch,
         ),
-        toggleableActiveColor: AppColors.primarySwatch,
         indicatorColor: AppColors.primarySwatch,
         appBarTheme: AppBarTheme(
           centerTitle: false,

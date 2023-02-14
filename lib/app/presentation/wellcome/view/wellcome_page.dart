@@ -6,6 +6,8 @@ import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
 import 'package:wordpress_flutter/app/presentation/wellcome/cubit/wellcome_cubit.dart';
 import 'package:wordpress_flutter/app/router/router.routes.dart';
 import 'package:wordpress_flutter/core/base/base_widget.dart';
+import 'package:wordpress_flutter/core/config/cubit/config_cubit.dart';
+import 'package:wordpress_flutter/core/di/locator.dart';
 import 'package:wordpress_flutter/core/res/decorations.dart';
 import 'package:wordpress_flutter/core/res/dimensions.dart';
 import 'package:wordpress_flutter/core/util/validator.dart';
@@ -20,7 +22,7 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
       BuildContext context, WellcomeCubit viewModel, WellcomeState state) {
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     final TextEditingController _domainController = TextEditingController();
-    bool? isValid = viewModel.isValid;
+    // bool? isValid = viewModel.isValid;
     return Scaffold(
         backgroundColor: Colors.lightGreen.shade200,
         body: SafeArea(
@@ -92,7 +94,8 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                         ),
                       )
                       .toList(),
-                  onChanged: (val) {},
+                  onChanged: (val) => getIt<ConfigCubit>().changeLanguage =
+                      Locale(val!.languageCode),
                 ),
                 const Spacer(flex: 2),
                 Container(
