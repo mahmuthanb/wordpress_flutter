@@ -21,9 +21,9 @@ import 'package:wordpress_flutter/app/presentation/app/cubit/test_cubit.dart'
 import 'package:wordpress_flutter/app/presentation/category/cubit/category_cubit.dart'
     as _i16;
 import 'package:wordpress_flutter/app/presentation/connectivity/cubit/internet_cubit.dart'
-    as _i19;
-import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart'
     as _i18;
+import 'package:wordpress_flutter/app/presentation/home_page/cubit/home_page_cubit.dart'
+    as _i17;
 import 'package:wordpress_flutter/app/presentation/post_detail/cubit/post_detail_cubit.dart'
     as _i11;
 import 'package:wordpress_flutter/app/presentation/settings/cubit/settings_cubit.dart'
@@ -31,8 +31,7 @@ import 'package:wordpress_flutter/app/presentation/settings/cubit/settings_cubit
 import 'package:wordpress_flutter/app/presentation/wellcome/cubit/wellcome_cubit.dart'
     as _i15;
 import 'package:wordpress_flutter/core/config/config.dart' as _i4;
-import 'package:wordpress_flutter/core/config/cubit/config_cubit.dart' as _i17;
-import 'package:wordpress_flutter/core/di/app_module.dart' as _i20;
+import 'package:wordpress_flutter/core/di/app_module.dart' as _i19;
 import 'package:wordpress_flutter/core/source/local_data_source.dart' as _i9;
 import 'package:wordpress_flutter/l10n/cubit/localization_cubit.dart' as _i10;
 
@@ -98,13 +97,11 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i5.CommonRepository>(),
           gh<_i9.LocalDataSource>(),
         ));
-    gh.factory<_i17.ConfigCubit>(
-        () => _i17.ConfigCubit(localDataSource: gh<_i9.LocalDataSource>()));
-    gh.factory<_i18.HomePageCubit>(() => _i18.HomePageCubit(
+    gh.factory<_i17.HomePageCubit>(() => _i17.HomePageCubit(
           gh<_i5.CommonRepository>(),
           gh<_i9.LocalDataSource>(),
         ));
-    gh.factory<_i19.InternetCubit>(() => _i19.InternetCubit(
+    gh.factory<_i18.InternetCubit>(() => _i18.InternetCubit(
           connectivity: gh<_i6.Connectivity>(),
           localDataSource: gh<_i9.LocalDataSource>(),
         ));
@@ -112,4 +109,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$AppModule extends _i20.AppModule {}
+class _$AppModule extends _i19.AppModule {}

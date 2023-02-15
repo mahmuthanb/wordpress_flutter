@@ -4,6 +4,8 @@
   "logoutText":"Kayıtlı verileri silip çıkış yapmak istediğine emin misin?",
   "btnOkay":"TAMAM",
   "btnCancel":"Geri",
+  "btnGetStarted":"Hemen başla",
+  "selectYourLanguage":"Lütfen dil seçiniz",
   "titleSettings":"Ayarlar",
   "titleDomain":"Alan adı",
   "titleAppName":"Uygulama adı",

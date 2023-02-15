@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:wordpress_flutter/core/base/base_view_model.dart';
@@ -13,7 +15,7 @@ class ConfigCubit extends Cubit<ConfigState> {
 
   ConfigCubit({
     required this.localDataSource,
-  }) : super(ConfigInitial(const Locale("en")));
+  }) : super(ConfigInitial(locale: const Locale("en")));
 
   bool checkDomainRegistered() {
     if (localDataSource.domain != null && localDataSource.domain!.isNotEmpty) {
@@ -29,5 +31,8 @@ class ConfigCubit extends Cubit<ConfigState> {
 
   Locale get locale => _locale;
   Locale _locale = const Locale("en");
-  set changeLanguage(Locale newLocale) => _locale = newLocale;
+  set changeLanguage(Locale newLocale) {
+    _locale = newLocale;
+    emit(ConfigInitial(locale: _locale));
+  }
 }

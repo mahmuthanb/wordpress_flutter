@@ -4,6 +4,8 @@
   "logoutText":"Are you sure want to clear data and exit?",
   "btnOkay":"OKAY",
   "btnCancel":"Cancel",
+  "btnGetStarted":"Get Started",
+  "selectYourLanguage":"Select your preferred language",
   "titleSettings":"Settings",
   "titleDomain":"Domain",
   "titleAppName":"Application name",

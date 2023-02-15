@@ -5,5 +5,7 @@ abstract class ConfigState extends BaseCubitState {}
 
 class ConfigInitial extends ConfigState {
   final Locale? locale;
-  ConfigInitial(this.locale);
+  final bool? domainRegistered;
+  final bool? isDark;
+  ConfigInitial({this.locale, this.isDark, this.domainRegistered});
 }

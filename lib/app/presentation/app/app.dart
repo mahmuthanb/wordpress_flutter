@@ -8,19 +8,19 @@ import 'package:wordpress_flutter/core/base/base_widget.dart';
 import 'package:wordpress_flutter/core/config/cubit/config_cubit.dart';
 import 'package:wordpress_flutter/core/res/theme.dart';
 
-class App extends BaseWidget<ConfigCubit, ConfigState> {
+class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context, ConfigCubit viewModel, ConfigState state) {
+  Widget build(BuildContext context) {
     return BlocBuilder<ConfigCubit, ConfigState>(
       builder: (context, state) {
         if (state is ConfigInitial) {
           return MaterialApp(
             title: 'WordPress in Flutter',
-            theme: AppTheme.theme(isDark: viewModel.isDark),
+            theme: AppTheme.theme(isDark: state.isDark),
             debugShowCheckedModeBanner: false,
             initialRoute:
-                viewModel.domainRegistered ? RouteMaps.home : RouteMaps.root,
+                state.domainRegistered ? RouteMaps.home : RouteMaps.root,
             locale: state.locale,
             onGenerateRoute: onGenerateRoute,
             localizationsDelegates: AppLocalizations.localizationsDelegates,

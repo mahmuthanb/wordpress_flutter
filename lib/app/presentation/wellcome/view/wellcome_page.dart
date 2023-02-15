@@ -57,9 +57,7 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                   padding: const EdgeInsets.symmetric(
                     vertical: AppDimens.m,
                   ),
-                  child: Text(
-                    AppLocalizations.of(context).wellcomeSubtitle,
-                  ),
+                  child: Text(AppLocalizations.of(context).wellcomeSubtitle),
                 ),
                 const Spacer(flex: 1),
                 Form(
@@ -78,7 +76,10 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                 ),
                 const SizedBox(height: AppDimens.l),
                 DropdownButtonFormField<Language>(
-                  decoration: AppDecorations.languageSelectorInputDecoration,
+                  decoration:
+                      AppDecorations.languageSelectorInputDecoration.copyWith(
+                    labelText: AppLocalizations.of(context).selectYourLanguage,
+                  ),
                   value: viewModel.languageList.first,
                   items: viewModel.languageList
                       .map(
@@ -131,9 +132,9 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                           padding: const EdgeInsets.symmetric(
                             horizontal: AppDimens.m,
                           ),
-                          child: const Center(
-                            child: Text("Get started"),
-                          ),
+                          child: Center(
+                              child: Text(
+                                  AppLocalizations.of(context).btnGetStarted)),
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: Colors.black,
