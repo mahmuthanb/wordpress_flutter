@@ -1,7 +1,7 @@
 part of 'config_cubit.dart';
 
 @immutable
-abstract class ConfigState extends BaseCubitState {}
+abstract class ConfigState {}
 
 class ConfigInitial extends ConfigState {
   final Locale? locale;

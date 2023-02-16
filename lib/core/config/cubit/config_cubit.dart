@@ -2,14 +2,11 @@ import 'dart:ui';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:wordpress_flutter/core/base/base_view_model.dart';
 import 'package:wordpress_flutter/core/source/local_data_source.dart';
 
 part 'config_state.dart';
 
-@injectable
 class ConfigCubit extends Cubit<ConfigState> {
   final LocalDataSource localDataSource;
 
