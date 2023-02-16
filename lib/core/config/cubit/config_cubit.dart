@@ -12,7 +12,10 @@ class ConfigCubit extends Cubit<ConfigState> {
 
   ConfigCubit({
     required this.localDataSource,
-  }) : super(ConfigInitial(locale: const Locale("en")));
+  }) : super(ConfigInitial(
+            locale: const Locale("en"),
+            isDark: false,
+            domainRegistered: false));
 
   bool checkDomainRegistered() {
     if (localDataSource.domain != null && localDataSource.domain!.isNotEmpty) {
@@ -30,6 +33,7 @@ class ConfigCubit extends Cubit<ConfigState> {
   Locale _locale = const Locale("en");
   set changeLanguage(Locale newLocale) {
     _locale = newLocale;
-    emit(ConfigInitial(locale: _locale));
+    emit(
+        ConfigInitial(locale: _locale, domainRegistered: false, isDark: false));
   }
 }

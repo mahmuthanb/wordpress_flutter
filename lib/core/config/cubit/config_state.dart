@@ -5,7 +5,8 @@ abstract class ConfigState {}
 
 class ConfigInitial extends ConfigState {
   final Locale? locale;
-  final bool? domainRegistered;
-  final bool? isDark;
-  ConfigInitial({this.locale, this.isDark, this.domainRegistered});
+  final bool domainRegistered;
+  final bool isDark;
+  ConfigInitial(
+      {this.locale, required this.isDark, required this.domainRegistered});
 }
