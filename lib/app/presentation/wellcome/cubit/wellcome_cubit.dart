@@ -39,4 +39,10 @@ class WellcomeCubit extends Cubit<WellcomeState> {
     Language(1, "Türkçe", "🇹🇷", "tr"),
     Language(2, "English", "🇺🇸", "en"),
   ];
+
+  setDarkTheme(bool val) {
+    return localDataSource.setDarkTheme(val);
+  }
+
+  bool get getTheme => localDataSource.darkTheme ?? false;
 }

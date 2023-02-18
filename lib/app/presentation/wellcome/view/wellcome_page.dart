@@ -99,14 +99,16 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                   onChanged: (val) => getIt<ConfigCubit>().changeLanguage =
                       Locale(val!.languageCode),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: AppDimens.l,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Theme Mode"),
-                    FlutterSwitch(value: false, onToggle: (c) => viewModel),
+                    const Text("Theme Mode"),
+                    FlutterSwitch(
+                        value: viewModel.getTheme,
+                        onToggle: (c) => viewModel.setDarkTheme(c)),
                   ],
                 ),
                 const Spacer(flex: 2),
