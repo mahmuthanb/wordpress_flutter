@@ -21,7 +21,7 @@ class App extends StatelessWidget {
           if (state is ConfigInitial) {
             return MaterialApp(
               title: 'WordPress in Flutter',
-              theme: AppTheme.theme(isDark: state.isDark),
+              theme: AppTheme.theme(isDark: !(state.isDark)),
               debugShowCheckedModeBanner: false,
               initialRoute:
                   state.domainRegistered ? RouteMaps.home : RouteMaps.root,

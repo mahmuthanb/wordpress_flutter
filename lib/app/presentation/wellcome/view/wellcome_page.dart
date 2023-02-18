@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:route_map/route_map.dart';
 import 'package:wordpress_flutter/app/data/model/language/language_model.dart';
 import 'package:wordpress_flutter/app/presentation/home_page/home_page.dart';
@@ -97,6 +98,16 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                       .toList(),
                   onChanged: (val) => getIt<ConfigCubit>().changeLanguage =
                       Locale(val!.languageCode),
+                ),
+                SizedBox(
+                  height: AppDimens.l,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Theme Mode"),
+                    FlutterSwitch(value: false, onToggle: (c) => viewModel),
+                  ],
                 ),
                 const Spacer(flex: 2),
                 Container(
