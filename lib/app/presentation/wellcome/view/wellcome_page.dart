@@ -107,8 +107,10 @@ class WellcomePage extends BaseWidget<WellcomeCubit, WellcomeState> {
                   children: [
                     const Text("Theme Mode"),
                     FlutterSwitch(
-                        value: viewModel.getTheme,
-                        onToggle: (c) => viewModel.setDarkTheme(c)),
+                        value: context.read<WellcomeCubit>().getTheme,
+                        onToggle: (c) {
+                          context.read<WellcomeCubit>().setDarkTheme(c);
+                        }),
                   ],
                 ),
                 const Spacer(flex: 2),
